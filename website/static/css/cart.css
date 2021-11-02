@@ -1,0 +1,260 @@
+:root {
+    --header-footer: #f5f5ef;
+    --background: #eee;
+    --carousel: #f9f6f2;
+    --highlight-color: #f1aa59;
+    --red-price: #f57134;
+    --light-dark: #666666;
+    --white-color: #ffffff;
+    --dark: #a87336;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-detail {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.cart-detail .cart-detail-product {
+    background-color: var(--background);
+    padding: 20px 20px 50px;
+    border-radius: 20px 0 0 20px;
+    position: relative;
+}
+
+.cart-detail .cart-detail-summary {
+    background-color: var(--carousel);
+    border-radius: 0 20px 20px 0;
+    padding: 20px 20px 50px;
+}
+
+.cart-detail .cart-detail-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+.cart-detail .cart-detail-header .title h3 {
+
+}
+
+.cart-detail .cart-detail-header .items {
+    text-align: right;
+}
+
+.cart-detail .cart-detail-header .items strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.cart-detail .cart-detail-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-detail .cart-detail-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+.cart-detail .cart-detail-content .cart-detail-img img {
+    object-fit: cover;
+    height: 120px;
+    width: 120px;
+    flex: 1;
+}
+
+.cart-detail .cart-detail-content .cart-detail-short {
+    display: block;
+    flex: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-detail .cart-detail-content .cart-detail-short h5 {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.cart-detail .cart-detail-content .cart-detail-short span {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.cart-detail .cart-detail-content .cart-detail-short span:last-child {
+    margin-bottom: 0;
+}
+
+.cart-detail .cart-detail-content .cart-detail-price {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--red-price);
+}
+
+.cart-detail .cart-detail-content .cart-detail-quantity {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.cart-detail .cart-detail-content .cart-detail-quantity input {
+    width: 30px;
+    height: 35px;
+    text-align: center;
+}
+
+.cart-detail .cart-detail-content .cart-detail-quantity .cart-detail-minus {
+    width: 30px;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 1px 2px var(--light-dark);
+}
+
+.cart-detail .cart-detail-content .cart-detail-quantity .cart-detail-plus {
+    width: 30px;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 1px 2px var(--light-dark);
+}
+
+.cart-detail .cart-detail-content .cart-detail-total {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--red-price);
+}
+
+.cart-detail .cart-detail-content .cart-detail-total i {
+    color: var(--light-dark);
+    margin-left: 10px;
+}
+
+.cart-detail .cart-detail-content .cart-detail-total i:hover {
+    color: var(--highlight-color);
+    cursor: pointer;
+}
+
+.cart-detail .cart-detail-button {
+    padding-top: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+
+.cart-detail .cart-detail-button a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    line-height: 20px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-header {
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-header h3 {
+    font-size: 1.75rem;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-title h4 {
+    font-size: 1.5rem;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content {
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--highlight-color);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-tempo {
+    margin-top: 20px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-tempo span {
+    font-size: 1.3rem;
+    color: var(--light-dark);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-tempo-value {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-tempo-value span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--red-price);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-voucher {
+    margin-top: 40px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-voucher span {
+    font-size: 1.3rem;
+    color: var(--light-dark);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-voucher-value {
+    margin-top: 37px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-content .cart-summary-voucher-value input {
+    /* width: 150px;
+    height: 30px; */
+    border-radius: 5px;
+    border: 1px solid var(--light-dark);
+    text-align: center;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total {
+    margin-top: 30px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-title {
+    text-align: left;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-title span {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-value {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-value span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--red-price);
+}
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-btn {
+    margin-top: 50px;
+    font-size: 1.3rem;
+    border-color: var(--light-dark);
+    background-color: var(--highlight-color);
+} 
+
+.cart-detail .cart-detail-summary .cart-summary-total .cart-total-btn:hover {
+    background-color: var(--dark);
+    color: var(--white-color);
+}
+
+
