@@ -7,6 +7,8 @@
     --light-dark: #666666;
     --white-color: #ffffff;
     --dark: #a87336;
+    --error-broder: #e74c3c;
+    --success-border: #2ecc71;
 }
 
 input::-webkit-outer-spin-button,

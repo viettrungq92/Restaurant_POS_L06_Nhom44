@@ -26,3 +26,7 @@ foods = [
 @views.route('/cart')
 def cart():
     return render_template("cart.html", foods=foods)
+
+@views.route('/table')
+def table():
+    return render_template("table.html")

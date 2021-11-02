@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+{% block title %}Table Reservation{% endblock %}
+{% block content %}
+<div class="container-fluid banner">
+    <form class="banner-content">
+        <h1>TABLE BOOKING</h1>
+        <div class="row">
+            <div class="col">
+                <input type="date" placeholder="yyyy-MM-dd" id="datepicker">
+            </div>
+            <div class="col">
+                <select name="time" id="timepicker">
+                    <option value="1">9:00 AM</option>
+                    <option value="2">10:00 AM</option>
+                    <option value="3">11:00 AM</option>
+                    <option value="4">12:00 PM</option>
+                    <option value="5">13:00 PM</option>
+                    <option value="6">14:00 PM</option>
+                    <option value="7">15:00 PM</option>
+                    <option value="8">16:00 PM</option>
+                    <option value="9">17:00 PM</option>
+                    <option value="10">18:00 PM</option>
+                    <option value="11">19:00 PM</option>
+                    <option value="12">20:00 PM</option>
+                    <option value="13">21:00 PM</option>
+                    <option value="14">22:00 PM</option>
+                </select>
+            </div>
+            <div class="col">
+                <select name="people" id="peoplepicker">
+                    <option value="2">2 Người</option>
+                    <option value="3">3 Người</option>
+                    <option value="4">4 Người</option>
+                    <option value="5">5 Người</option>
+                    <option value="6">6 Người</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <textarea name="message" id="note" cols="65" rows="3" placeholder="Ghi chú"></textarea>
+            </div>
+        </div>
+        <button class="btn table-booking-btn" type="button" data-bs-toggle="modal"
+            data-bs-target="#myModal">Book</button>
+    </form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h4>Thông tin cá nhân</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Tên</label>
+                            <input type="text" class="form-control" id="name" placeholder="Nguyễn Văn A"
+                                required>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phonenumber">Số điện thoại</label>
+                            <input type="number" class="form-control" id="phonenumber"
+                                placeholder="01234xxx" required>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <button id="login" type="button"
+                            class="btn btn-info btn-block btn-round btn-login">Login</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="signup-section">Not a member yet? <a class="text-info" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" data-bs-target="#signupModal"> Sign Up</a>.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
