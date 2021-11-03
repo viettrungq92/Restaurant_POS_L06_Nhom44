@@ -1,0 +1,94 @@
+body{
+	margin: 10px;
+}
+
+.card {
+	margin-bottom: 20px;
+	text-align: center;
+	border: none;
+	transition: all 0.5s;
+}
+.card:hover {
+	background-color: #ccc;
+}
+
+.box-bottom {
+	margin-top: 10px;
+	display: flex;
+	text-align: center;
+}
+.box-bottom img {
+	width: 90%;
+}
+.padding-7 {
+	padding: 7px;
+}
+
+.price {
+	color: red;
+}
+
+/* -- quantity box -- */
+
+.quantity {
+	display: inline-block;
+ }
+ 
+ .quantity.input-text.qty {
+	   width: 35 px;
+	   height: 39 px;
+	   padding: 0 5 px;
+	   text-align: center;
+	   background-color: transparent;
+	   border: 1 px solid #efefef;
+	}
+ 
+	.quantity.buttons_added {
+	   text-align: left;
+	   position: relative;
+	   white-space: nowrap;
+	   vertical-align: top;
+	   margin: 10px;
+	}
+ 
+	.quantity.buttons_added input {
+	   display: inline-block;
+	   margin: 0;
+	   vertical-align: top;
+	   box-shadow: none;
+	}
+ 
+	.quantity.buttons_added.minus,
+	.quantity.buttons_added.plus {
+	   padding: 7 px 10 px 8 px;
+	   height: 41 px;
+	   background-color: #ffffff;
+	   border: 1 px solid #efefef;
+	   cursor: pointer;
+	}
+ 
+	.quantity.buttons_added.minus {
+	   border-right: 0;
+	}
+ 
+	.quantity.buttons_added.plus {
+	   border-left: 0;
+	}
+ 
+	.quantity input::-webkit-outer-spin-button,
+	.quantity input::-webkit-inner-spin-button {
+	   -webkit-appearance: none;
+	   -moz-appearance: none;
+	   margin: 0;
+	}
+
+	/*
+	.quantity.buttons_added.minus: hover,
+	.quantity.buttons_added.plus: hover {
+	   background: #eeeeee;
+	} 
+	.quantity.buttons_added.minus: focus,
+	.quantity.buttons_added.plus: focus {
+	   outline: none;
+	}
+	*/
