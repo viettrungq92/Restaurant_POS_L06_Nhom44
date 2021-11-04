@@ -1,0 +1,85 @@
+{
+    "burger" : [
+        {
+            "name" : "Cheese Burger",
+            "price" : 35000,
+            "thumbnail" : "/static/images/cheese-burger-deluxe.png"
+        },
+        {
+            "name" : "Chicken Burger",
+            "price" : 40000,
+            "thumbnail" : "/static/images/cheese-burger-deluxe.png"
+        },
+        {
+            "name" : "Beef 'n' Pork Burger",
+            "price" : 60000,
+            "thumbnail" : "/static/images/cheese-burger-deluxe.png"
+        },
+        {
+            "name" : "Special Burger",
+            "price" : 80000,
+            "thumbnail" : "/static/images/cheese-burger-deluxe.png"
+        }
+    ],
+    "chicken" : [
+        {
+            "name" : "Hot wings (3 pc)",
+            "price" : 48000,
+            "thumbnail" : "/static/images/chicken.jpg"
+        },
+        {
+            "name" : "Fried chicken",
+            "price" : 35000,
+            "thumbnail" : "/static/images/chicken.jpg"
+        },
+        {
+            "name" : "Roast chiken",
+            "price" : 66000,
+            "thumbnail" : "/static/images/chicken.jpg"
+        }
+    ],
+    "rice" : [
+        {
+            "name" : "Chicken Skewer Rice",
+            "price" : 40000,
+            "thumbnail" : "/static/images/chicken-rice.jpg"
+        },
+        {
+            "name" : "Spicy Chicken Rice",
+            "price" : 40000,
+            "thumbnail" : "/static/images/chicken-rice.jpg"
+        },
+        {
+            "name" : "Cooked Beef Rice",
+            "price" : 40000,
+            "thumbnail" : "/static/images/chicken-rice.jpg"
+        },
+        {
+            "name" : "Flava Roast Fillet Rice",
+            "price" : 40000,
+            "thumbnail" : "/static/images/chicken-rice.jpg"
+        }
+    ],
+    "drinks" : [
+        {
+            "name" : "Coca Cola",
+            "price" : 17000,
+            "thumbnail" : "/static/images/coke.png"
+        },
+        {
+            "name" : "Milo",
+            "price" : 10000,
+            "thumbnail" : "/static/images/coke.png"
+        },
+        {
+            "name" : "Aquafina",
+            "price" : 10000,
+            "thumbnail" : "/static/images/coke.png"
+        },
+        {
+            "name" : "Peach Tea",
+            "price" : 40000,
+            "thumbnail" : "/static/images/coke.png"
+        }
+    ]
+}
