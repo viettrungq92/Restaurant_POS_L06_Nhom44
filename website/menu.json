@@ -1,83 +1,112 @@
 {
     "burger" : [
         {
+            "id" : 1,
             "name" : "Cheese Burger",
+            "type" : "burger",
             "price" : 35000,
             "thumbnail" : "/static/images/cheese-burger-deluxe.png"
         },
         {
+            "id" : 2,
             "name" : "Chicken Burger",
+            "type" : "burger",
             "price" : 40000,
             "thumbnail" : "/static/images/cheese-burger-deluxe.png"
         },
         {
+            "id" : 3,
             "name" : "Beef 'n' Pork Burger",
+            "type" : "burger",
             "price" : 60000,
             "thumbnail" : "/static/images/cheese-burger-deluxe.png"
         },
         {
+            "id" : 4,
             "name" : "Special Burger",
+            "type" : "burger",
             "price" : 80000,
             "thumbnail" : "/static/images/cheese-burger-deluxe.png"
         }
     ],
     "chicken" : [
         {
+            "id" : 5,
             "name" : "Hot wings (3 pc)",
+            "type" : "chicken",
             "price" : 48000,
             "thumbnail" : "/static/images/chicken.jpg"
         },
         {
+            "id" : 6,
             "name" : "Fried chicken",
+            "type" : "chicken",
             "price" : 35000,
             "thumbnail" : "/static/images/chicken.jpg"
         },
         {
+            "id" : 7,
             "name" : "Roast chiken",
+            "type" : "chicken",
             "price" : 66000,
             "thumbnail" : "/static/images/chicken.jpg"
         }
     ],
     "rice" : [
         {
+            "id" : 8,
             "name" : "Chicken Skewer Rice",
+            "type" : "rice",
             "price" : 40000,
             "thumbnail" : "/static/images/chicken-rice.jpg"
         },
         {
+            "id" : 9,
             "name" : "Spicy Chicken Rice",
+            "type" : "rice",
             "price" : 40000,
             "thumbnail" : "/static/images/chicken-rice.jpg"
         },
         {
+            "id" : 10,
             "name" : "Cooked Beef Rice",
+            "type" : "rice",
             "price" : 40000,
             "thumbnail" : "/static/images/chicken-rice.jpg"
         },
         {
+            "id" : 11,
             "name" : "Flava Roast Fillet Rice",
+            "type" : "rice",
             "price" : 40000,
             "thumbnail" : "/static/images/chicken-rice.jpg"
         }
     ],
     "drinks" : [
         {
+            "id" : 12,
             "name" : "Coca Cola",
+            "type" : "drinks",
             "price" : 17000,
             "thumbnail" : "/static/images/coke.png"
         },
         {
+            "id" : 13,
             "name" : "Milo",
+            "type" : "drinks",
             "price" : 10000,
             "thumbnail" : "/static/images/coke.png"
         },
         {
+            "id" : 14,
             "name" : "Aquafina",
             "price" : 10000,
             "thumbnail" : "/static/images/coke.png"
         },
         {
+            "id" : 15,
             "name" : "Peach Tea",
+            "type" : "drinks",
             "price" : 40000,
             "thumbnail" : "/static/images/coke.png"
         }
