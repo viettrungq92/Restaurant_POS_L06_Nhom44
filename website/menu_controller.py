@@ -19,22 +19,11 @@ def display_menu(catagory= "all"):
     else:
         abort(404)
 
-# @menu.route("/menu")
-# def display_menu():
-#     with open("website/menu.json","r") as file:
-#         menu = json.load(file)
-    
-#     selected = []
-#     try:
-#         catagory = request.args["catagory"]
-#     except:
-#         for dishs in menu.values():
-#             selected.extend(dishs)
-#         return render_template("menu.html", menu = selected)
-
-#     if catagory in menu.keys():
-#         selected.extend(menu[catagory])
-#         return render_template("menu.html", menu = selected)
-#     else:
-#         abort(404)
-    
+@menu.route("/details")
+def food_details():
+    """
+    Lấy data từ cái URL bằng request.args[<tên khóa>] rồi truyền vào cái file detail.html
+    Vd URL: localhost/details?id=9&name=Spicy%20Chicken%20Rice&price=40000&thumbnail=/static/images/chicken-rice.jpg
+    """
+    # data = 
+    # return render_template("detail.html", data = data)
