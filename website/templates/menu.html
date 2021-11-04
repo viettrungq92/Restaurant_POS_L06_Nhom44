@@ -15,7 +15,7 @@
                 <ul class="nav flex-column">
                     {% for href,id,caption in catagory_tab%}
                     <li class="nav-item {% if catagory == id %} active {% endif %}">
-                        <a class="nav-link" href="{{ href|safe }}"> {{ caption|e }}</a>
+                        <a class="nav-link" href=" {{href | safe}}"> {{ caption|e }}</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -23,40 +23,23 @@
             <!--Menu content-->
             <div class="col" id="menu-content">
                 <h2 class="catagory-name">{{catagory | upper}}</h2>
-                <!-- <div class="row row-cols-4"> -->
-                    {% if catagory == "all" %}
-                        {% for cat in menu.values() %}
-                            {% for food in cat %}
-                                <div class="card">
-                                    <div class="card-img-top">
-                                        <img src="{{ food.thumbnail }}" class="card-img-top image-thumbnail" alt="...">    
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">{{ food.name }}</p>
-                                        <h5 class="card-title">{{ food.price }}vnd</h5>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        <a class="btn" href="#">Details</a>
-                                    </div>
+                    {% for food in menu%}
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img src="{{ food.thumbnail }}" class="card-img-top image-thumbnail" alt="...">    
                                 </div>
-                            {% endfor %}   
-                        {% endfor %}
-                    {% else %}
-                        {% for food in menu.get(catagory) %}
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-img-top">
-                                        <img src="{{ food.thumbnail }}" class="card-img-top image-thumbnail" alt="...">    
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">{{ food.name }}</p>
-                                        <h5 class="card-title">{{ food.price }}vnd</h5>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        <a class="btn" href="#">Details</a>
-                                    </div>
+                                <div class="card-body">
+                                    <!-- <p> {{food.thumbnail}}</p> -->
+                                    <p class="card-text">{{ food.name }}</p>
+                                    <h5 class="card-title">{{ food.price }}vnd</h5>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <!-- <a class="btn" href="menu/?id={{food.id}}">Details</a> -->
+                                    <a class="btn" href="#">Details</a>
                                 </div>
                             </div>
-                        {% endfor %}
-                    {% endif %}
+                        </div>
+                    {% endfor %}
                 <!-- </div> -->
             </div>
         </div>

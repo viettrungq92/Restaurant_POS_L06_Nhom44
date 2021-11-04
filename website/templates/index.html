@@ -41,15 +41,10 @@
                     <div class="dropdown">
                         <button class="btn-no-border menu-item"> 
                             <img src="../static/images/menuwhite.png " class="png"/>
-                            <div class="btn dropdown-toggle p-0 white-button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="btn p-0 white-button" type="button" id="dropdownMenuButton1" href="{{ url_for('menu.display_menu', catagory='all') }}">
                                 MENU
-                            </div>
+                            </a>
                         </button>
-                            <ul class="dropdown-menu m-0 p-0" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Item 1</a></li>
-                            <li><a class="dropdown-item" href="#">Item 2</a></li>
-                            <li><a class="dropdown-item" href="#">Item 3</a></li>
-                            </ul>
                     </div>
 
                 </div>    
