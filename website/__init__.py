@@ -7,6 +7,6 @@ def create_app():
     from .views import views
     app.register_blueprint(views, url_prefix='/')
 
-    from menu_controller import menu
+    from .menu_controller import menu
     app.register_blueprint(menu, url_prefix='/')
     return app
