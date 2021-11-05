@@ -31,14 +31,15 @@
 <body>
     <!-- Header -->
     {% include 'header.html' %}
-    
     <!-- Login popup-->
     {% include 'login.html' %}
     <!-- Register popup-->
     {% include 'register.html'%}
 
     <!-- Main Content -->
-    {% block content %}{% endblock %}
+    <div class="main-contain">
+        {% block content %}{% endblock %}
+    </div>
 
     <!-- Footer -->
 
