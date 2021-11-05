@@ -76,3 +76,7 @@
 .menu-item:hover {
     background: #fcdb03;
 }
+
+.full-width{
+    width: 100% !important;
+}
