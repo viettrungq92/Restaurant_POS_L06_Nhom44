@@ -17,7 +17,7 @@
     height: 70px;
     color: white;
     position: fixed;
-    z-index: 10000;
+    z-index: 1000;
 }
 .header-row {
     height: 100%;
