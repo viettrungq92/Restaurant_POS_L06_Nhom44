@@ -44,14 +44,14 @@
 
             <div class="col-sm-2 p-0 m-0">
                 <div class="row p-0 m-0 menu-item">
-                    <div class="dropdown">
-                        <button class="btn-no-border menu-item"> 
+                    <!-- <div class="dropdown"> -->
+                        <a class="flex menu-item" href="{{ url_for('menu.display_menu', catagory='all') }}" style="text-decoration: none;"> 
                             <img src="../static/images/menuwhite.png " class="png"/>
-                            <a class="btn p-0 white-button" type="button" id="dropdownMenuButton1" href="{{ url_for('menu.display_menu', catagory='all') }}">
+                            <div class="p-0 white-button">
                                 MENU
-                            </a>
-                        </button>
-                    </div>
+                            </div>
+                        </a>
+                    <!-- </div> -->
 
                 </div>    
             </div> 
@@ -60,12 +60,12 @@
             <div class="col-sm-2 p-0 m-0">
                 <div class="row p-0 m-0 menu-item">                    
                     <button class="btn-no-border menu-item p-0 m-0">
-                        <div class="flex">
+                        <a class="flex" style="text-decoration: none;" href=" {{ url_for('views.table')}}">
                             <div>
                                 <img src="../static/images/reservationwhite.png "  class="png"/>
                             </div>
                             <div style="margin-left: 10px;" class="white-button">RESERVATION</div>
-                        </div>
+                        </a>
                     </button>
                     
                 </div>    

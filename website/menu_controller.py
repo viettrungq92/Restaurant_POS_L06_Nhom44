@@ -15,7 +15,7 @@ def display_menu(catagory= "all"):
             all_menu.extend(dishs)
         return render_template("menu.html", menu = all_menu)
     elif catagory in menu.keys():
-        return render_template("menu.html", menu = menu[catagory])
+        return render_template("menu.html", menu = menu.get(catagory), catagory = catagory)
     else:
         abort(404)
 
