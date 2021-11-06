@@ -6,7 +6,7 @@ menu = Blueprint('menu',__name__)
 
 @menu.route("/menu/<catagory>")
 def display_menu(catagory= "all"):
-    with open("Restaurant_POS_L06_Nhom44/website/menu.json","r") as file:
+    with open("website/menu.json","r") as file:
         menu = json.load(file)
     
     if catagory == "all":
@@ -19,32 +19,10 @@ def display_menu(catagory= "all"):
     else:
         abort(404)
 
-# @menu.route("/menu")
-# def display_menu():
-#     with open("website/menu.json","r") as file:
-#         menu = json.load(file)
-    
-#     selected = []
-#     try:
-#         catagory = request.args["catagory"]
-#     except:
-#         for dishs in menu.values():
-#             selected.extend(dishs)
-#         return render_template("menu.html", menu = selected)
-
-#     if catagory in menu.keys():
-#         selected.extend(menu[catagory])
-#         return render_template("menu.html", menu = selected)
-#     else:
-#         abort(404)
-    
 @menu.route("/detail")
 def details():
     (id, type) = request.args.values()
     print(id, type)
-    with open("Restaurant_POS_L06_Nhom44/website/menu.json", "r") as f:
+    with open("/website/menu.json", "r") as f:
         menu = json.load(f)
     return render_template("details.html",id = id,type = type,menu = menu)
-
-import os
-print (os.getcwd())
