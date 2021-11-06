@@ -6,8 +6,10 @@ views = Blueprint('views', __name__)
 
 carts = [
     {
-        'id': 1,
-        'quantity': 2
+        'name': 'Burger phô mai',
+        'price': 80000,
+        'quantity': 5,
+        'image': 'https://mcdonalds.vn/uploads/2018/food/burgers/cheese-burger-deluxe.png'
     },
     {
         'name': '6 Miếng Cánh Gà',
@@ -25,7 +27,7 @@ carts = [
 
 @views.route('/cart')
 def cart():
-    return render_template("cart.html", foods=foods)
+    return render_template("cart.html", foods=carts)
 
 @views.route('/')
 def table():
