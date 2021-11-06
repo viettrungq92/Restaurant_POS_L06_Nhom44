@@ -1,0 +1,36 @@
+{
+    "booking": [
+        {
+            "name": "Hiep",
+            "phone_number:": "0958456781",
+            "date":"2021-11-05",
+            "time": "18:00 PM",
+            "nop": "4",
+            "msg": "None"
+        },
+        {
+            "name": "An",
+            "phone_number:": "0958456461",
+            "date":"2021-11-06",
+            "time": "15:00 PM",
+            "nop": "6",
+            "msg": "None"
+        },
+        {
+            "name": "Binh",
+            "phone_number:": "0924456781",
+            "date":"2021-11-05",
+            "time": "19:00 PM",
+            "nop": "6",
+            "msg": "None"
+        },
+        {
+            "name": "Chau",
+            "phone_number:": "0914656781",
+            "date":"2021-11-05",
+            "time": "18:00 PM",
+            "nop": "2",
+            "msg": "None"
+        }
+    ]
+}
