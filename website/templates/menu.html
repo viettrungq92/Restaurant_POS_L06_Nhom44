@@ -34,8 +34,8 @@
                                     <p class="card-text">{{ food.name }}</p>
                                     <h5 class="card-title">{{ food.price }}vnd</h5>
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    <a class="btn" href="{{ url_for('.food_details') }}?id={{ food.id }}&name={{ food.name }}&price={{ food.price }}&thumbnail={{ food.thumbnail }}">Details</a>
-                                    <!-- <a class="btn" href="#">Details</a> -->
+                                    <!-- <a class="btn" href="menu/?id={{food.id}}">Details</a> -->
+                                    <a class="btn" href="{{url_for('.details')}}?id={{food.id}}&type={{food.type}}" id="detailpage">Details</a>
                                 </div>
                             </div>
                         </div>

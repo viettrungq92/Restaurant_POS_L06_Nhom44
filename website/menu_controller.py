@@ -19,11 +19,10 @@ def display_menu(catagory= "all"):
     else:
         abort(404)
 
-@menu.route("/details")
-def food_details():
-    """
-    Lấy data từ cái URL bằng request.args[<tên khóa>] rồi truyền vào cái file detail.html
-    Vd URL: localhost/details?id=9&name=Spicy%20Chicken%20Rice&price=40000&thumbnail=/static/images/chicken-rice.jpg
-    """
-    # data = 
-    # return render_template("detail.html", data = data)
+@menu.route("/detail")
+def details():
+    (id, type) = request.args.values()
+    print(id, type)
+    with open("/website/menu.json", "r") as f:
+        menu = json.load(f)
+    return render_template("details.html",id = id,type = type,menu = menu)
