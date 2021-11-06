@@ -13,7 +13,7 @@ h1 {
 
 .banner {
     max-height: 700px;
-    background-image: url(../image/table_booking_banner.jpg);
+    background-image: url(../images/table_booking_banner.jpg);
     background-color: #1d1c1c;
     height: 700px;
     background-position: center;
@@ -73,6 +73,10 @@ h1 {
     height: 40px;
     background-color: orange;
     border-radius: 5px;
+}
+
+.disable {
+    background-color: rgb(170, 170, 170);
 }
 
 .modal-header .close {
