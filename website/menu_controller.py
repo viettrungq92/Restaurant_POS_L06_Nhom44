@@ -38,3 +38,9 @@ def display_menu(catagory= "all"):
 #     else:
 #         abort(404)
     
+@menu.route("/detail")
+def details():
+    (id, type) = request.args
+    with open("website/menu.json", "r") as f:
+        menu = json.load(f)
+    return render_template("details.html",id = id,type = type,menu = menu)
