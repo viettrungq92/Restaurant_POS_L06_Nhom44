@@ -6,7 +6,7 @@
             <!--Catagories navigation bars-->
             <div class="col-md-2" id="catagory-tab" >
                 {% set catagory_tab = [
-                        ( url_for('.display_menu', catagory='all'), "all", "All"),
+                        ( url_for('.display_menu', catagory='all'), null , "All"),
                         ( url_for('.display_menu', catagory='burger'), "burger", "Burger"),
                         ( url_for('.display_menu', catagory='chicken'), "chicken", "Chicken"),
                         ( url_for('.display_menu', catagory='rice'), "rice", "Rice"),
@@ -35,7 +35,7 @@
                                     <h5 class="card-title">{{ food.price }}vnd</h5>
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     <!-- <a class="btn" href="menu/?id={{food.id}}">Details</a> -->
-                                    <a class="btn" href="#">Details</a>
+                                    <a class="btn" href="{{url_for('.details')}}?id={{food.id}}&type={{food.type}}" id="detailpage">Details</a>
                                 </div>
                             </div>
                         </div>

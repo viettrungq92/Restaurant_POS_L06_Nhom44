@@ -4,5 +4,5 @@ import json
 details = Blueprint('details',__name__)
 
 @details.route("/details")
-def dish_details(id):
-    pass
+def render_details():
+    return "Hello"

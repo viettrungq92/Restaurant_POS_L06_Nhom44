@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block title %} {{catagory | capitalize}} Menu{% endblock %}
+{% block content %}
+<div class="container pt-5 ">
+
+        <div class="product-detail row">
+
+            <div class="col-md-1"></div>
+
+            {% for food in menu.get(type) %} {% if food.get('id') == (id|int) %}
+
+            <div class="col-md-6">
+                <div class="box-large">
+                    <div class="box-top">
+                        <img id="img-large" class="img-fluid" src="{{ food.thumbnail }}" alt="Hinh">
+                    </div>
+                    <!-- <div class="box-bottom">
+                        <div>
+                            <a href="#" onclick="changeImage(1)"><img src="../static/image/burger-california.png" alt="Hinh"></a>
+                        </div>
+                        <div>
+                            <a href="#" onclick="changeImage(2)"><img src="../static/image/burger-california.png" alt="Hinh"></a>
+                        </div>
+                        <div>
+                            <a href="#" onclick="changeImage(3)"><img src="../static/image/burger-california.png" alt="Hinh"></a>
+                        </div>
+                        <div>
+                            <a href="#" onclick="changeImage(4)"><img src="../static/image/burger-california.png" alt="Hinh"></a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="col-md-4 description">
+                <h2>{{ food.name }}</h2>
+                <h2 class="price">{{ food.price }}</h2>
+
+                <div class="quantity buttons_added">
+                    <input type="button" value="-" class="minus">
+                    <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="2" pattern="" inputmode="">
+                    <input type="button" value="+" class="plus">
+                </div>
+
+                <div>
+                    <button class="btn btn-primary" type="button">Add to cart</button>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/fun-detail.js"></script>
+</body>
+{% endblock %}}

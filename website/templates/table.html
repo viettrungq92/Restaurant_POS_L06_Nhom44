@@ -1,0 +1,105 @@
+{% extends "index.html" %}
+{% block title %}Table Reservation{% endblock %}
+{% block content %}
+<div class="container-fluid banner">
+    <form class="banner-content">
+        <h1>TABLE BOOKING</h1>
+        <div class="row">
+            <div class="col">
+                <input type="date" placeholder="yyyy-MM-dd" id="datepicker">
+            </div>
+            <div class="col">
+                <select name="time" id="timepicker">
+                    <option value="0">--:-- AM</option>
+                    <option value="9">9:00 AM</option>
+                    <option value="10">10:00 AM</option>
+                    <option value="11">11:00 AM</option>
+                    <option value="12">12:00 PM</option>
+                    <option value="13">13:00 PM</option>
+                    <option value="14">14:00 PM</option>
+                    <option value="15">15:00 PM</option>
+                    <option value="16">16:00 PM</option>
+                    <option value="17">17:00 PM</option>
+                    <option value="18">18:00 PM</option>
+                    <option value="19">19:00 PM</option>
+                    <option value="20">20:00 PM</option>
+                    <option value="21">21:00 PM</option>
+                    <option value="22">22:00 PM</option>
+                </select>
+            </div>
+            <div class="col">
+                <select name="people" id="peoplepicker">
+                    <option value="0">Loại bàn</option>
+                    <option value="2">2 Người</option>
+                    <option value="3">3 Người</option>
+                    <option value="4">4 Người</option>
+                    <option value="5">5 Người</option>
+                    <option value="6">6 Người</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <textarea name="message" id="note" cols="65" rows="3" placeholder="Ghi chú"></textarea>
+            </div>
+        </div>
+        <button class="btn table-booking-btn" type="button" id="book_info">Book</button>
+        <!-- data-bs-toggle="modal" data-bs-target="#myModal" -->
+    </form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h4>Thông tin cá nhân</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Tên</label>
+                            <input type="text" class="form-control" id="name" placeholder="Nguyễn Văn A"
+                                required>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="phonenumber">Số điện thoại</label>
+                            <input type="number" class="form-control" id="phonenumber"
+                                placeholder="01234xxx" required>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <button id="book" type="button"
+                            class="btn btn-info btn-block btn-round btn-login">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="signup-section">Not a member yet? <a class="text-info" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" data-bs-target="#signupModal"> Sign Up</a>.</div>
+            </div>
+        </div>
+    </div>
+</div>
+ <!-- Toast Start -->
+ <div class="alert hide">
+    <span class="fas fa-exclamation-circle"></span>
+    <span class="msg">Warning: This is a warning alert!</span>
+    <div class="close-btn">
+        <span class="fas fa-times"></span>
+    </div>
+</div>
+<!-- Toast End -->
+<div id="user-data" style="display: none;">{{ user }}</div>
+  <!-- JQUERY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
