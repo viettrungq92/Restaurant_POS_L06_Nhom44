@@ -4,3 +4,17 @@
     top: 70px;
     width: 100%;
 }
+label.error{
+    display:block;
+    color: red;
+}
+.icon-see-password-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    border: 1 px solid #ced4da;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    width: 100%;
+}
