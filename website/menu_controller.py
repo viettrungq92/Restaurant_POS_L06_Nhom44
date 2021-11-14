@@ -1,6 +1,13 @@
 # from website import app
-from flask import Blueprint, render_template, request, abort
+from flask import Blueprint, render_template, request, abort, redirect
+# from flask_wtf import FlaskForm
+# from wtforms import StringField
+# from wtforms.validators import DataRequired
 import json
+
+from flask.helpers import url_for
+
+from .model.order import OrderForm
 
 menu = Blueprint('menu',__name__)
 
@@ -26,3 +33,4 @@ def details():
     with open("website/menu.json", "r") as f:
         menu = json.load(f)
     return render_template("details.html",id = id,type = type,menu = menu)
+ 
