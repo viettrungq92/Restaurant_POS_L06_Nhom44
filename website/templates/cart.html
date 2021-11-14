@@ -125,10 +125,12 @@
                         <span id="total-price">0 &#8363;</span>
                     </div>
                     <button class="btn cart-total-btn" type="button" data-bs-toggle="modal"
-                        data-bs-target="#myModal"><i class="fas fa-money-bill-wave"></i> Checkout</button>
+                        data-bs-target="#checkout-modal"><i class="fas fa-money-bill-wave"></i> Checkout</button>
                 </div>
             </div>
         </div>
     </div>
+
+    {% include "Checkout.html" %}
 </div>
 {% endblock %}

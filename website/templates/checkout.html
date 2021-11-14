@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+{% block title %} {{catagory | capitalize}} Menu{% endblock %}
+{% block content %}
+<div class="container pt-5">
+<!-- Checkout Modal -->
+  <div class="modal fade" id="checkout-modal" tabindex="-1" aria-labelledby="order-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content needs-validation" method="post" novalidate>
+          <div class="modal-header">
+            <h5 class="modal-title" id="order-modal">Please fill out the form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="row modal-body">
+            {{ form.csrf_token }}
+            <div class="mb-3">
+              <!--Full Name-->
+              <div class="row">
+                <div class="col">
+                  {{ form.fname.label}}
+                  {{ form.fname(placeholder=form.fname.label.text, class="form-control" )}}
+                  <div class="invalid-feedback">Please enter your {{ form.fname.label.text }}</div>
+                </div>
+                <div class="col">
+                  {{ form.lname.label }}
+                  {{ form.lname(placeholder=form.lname.label.text, class="form-control")}}
+                  <div class="invalid-feedback">Please enter your {{ form.lname.label.text }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <!--Email-->
+              {{ form.email.label}}
+              {{ form.email(placeholder=form.email.label.text, class="form-control")}}
+              <div class="invalid-feedback">Please enter your {{ form.email.label.text }}</div>
+            </div>
+            <div class="mb-3">
+              <!--Phone Number-->
+              {{ form.phoneNum.label }}
+              {{ form.phoneNum(placeholder=form.phoneNum.label.text, class="form-control")}}
+              <div class="invalid-feedback">Please enter your {{ form.phoneNum.label.text }}</div>
+            </div>
+            <div class="mb-3">
+              <!--Address-->
+              {{ form.address.label }}
+              {{ form.address(placeholder=form.address.label.text, class="form-control")}}
+              <div class="invalid-feedback">Please enter your {{ form.address.label.text }}</div>
+            </div>
+            
+            <div class="mb-3">
+              <!--Paying Method-->
+              <div class="row">
+              {{ form.method.label }}
+              {% for subfield in form.method %}
+                <div class="col">
+                  <div class="form-check form-check-inline">
+                        {{ subfield(class="form-check-input") }}
+                        {{ subfield.label(class="form-check-label") }}
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+            
+
+            
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" >Checkout</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+{% endblock %}
