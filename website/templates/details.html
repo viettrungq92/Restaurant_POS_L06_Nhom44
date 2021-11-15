@@ -37,12 +37,12 @@
 
                 <div class="quantity buttons_added">
                     <input type="button" value="-" class="minus">
-                    <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="2" pattern="" inputmode="">
+                    <input id="qty" type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="2" pattern="" inputmode="">
                     <input type="button" value="+" class="plus">
                 </div>
 
                 <div>
-                    <button class="btn btn-primary" type="button">Add to cart</button>
+                    <button id="addCartBtn" class="btn btn-primary" type="button">Add to cart</button>
                 </div>
             </div>
             {% endif %} {% endfor %}
