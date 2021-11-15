@@ -55,11 +55,17 @@
 .btn-no-border {
     border: none;
     background: none;
+    position: relative;
 }
 .btn-img-button {
     align-items:center;
     margin: 0px;
     height: 100%;
+}
+.btn-no-border .badge {
+    position: absolute;
+    top: -5px;
+    right: 35px;
 }
 .flex {
     display: flex;
