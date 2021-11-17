@@ -17,15 +17,24 @@
     <!-- Bootstrap v5.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- FLatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/index.css">
     <!-- Cart CSS -->
     <link rel="stylesheet" href="../static/css/cart.css">
+  
+    <!-- Table Booking -->
+    <link rel="stylesheet" href="../static/css/table.css">
+    <!-- Toast -->
+    <link rel="stylesheet" href="../static/css/toast.css">
+
     <!-- Header CSS -->
     <link rel="stylesheet" href="../static/css/header.css">
     <!-- Menu CSS  -->
     <link rel="stylesheet" href="../static/css/menu.css">
     
+
 </head>
 
 <body>
@@ -38,14 +47,14 @@
 
             <div class="col-sm-2 p-0 m-0">
                 <div class="row p-0 m-0 menu-item">
-                    <div class="dropdown">
-                        <button class="btn-no-border menu-item"> 
+                    <!-- <div class="dropdown"> -->
+                        <a class="flex menu-item" href="{{ url_for('menu.display_menu', catagory='all') }}" style="text-decoration: none;"> 
                             <img src="../static/images/menuwhite.png " class="png"/>
-                            <a class="btn p-0 white-button" type="button" id="dropdownMenuButton1" href="{{ url_for('menu.display_menu', catagory='all') }}">
+                            <div class="p-0 white-button">
                                 MENU
-                            </a>
-                        </button>
-                    </div>
+                            </div>
+                        </a>
+                    <!-- </div> -->
 
                 </div>    
             </div> 
@@ -54,12 +63,12 @@
             <div class="col-sm-2 p-0 m-0">
                 <div class="row p-0 m-0 menu-item">                    
                     <button class="btn-no-border menu-item p-0 m-0">
-                        <div class="flex">
+                        <a class="flex" style="text-decoration: none;" href=" {{ url_for('views.table')}}">
                             <div>
                                 <img src="../static/images/reservationwhite.png "  class="png"/>
                             </div>
                             <div style="margin-left: 10px;" class="white-button">RESERVATION</div>
-                        </div>
+                        </a>
                     </button>
                     
                 </div>    
@@ -143,8 +152,14 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <!-- Flatpicker -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- JS Custom -->
     <script src="../static/js/index.js"></script>
+    <!-- Table Booking Script -->
+    <script type="text/javascript" src="../static/js/table.json"></script>
+    <script type="text/javascript" src="../static/js/table.js"></script>
+    <!-- <script src="../static/js/table.js"></script> -->
 </body>
 
 </html>

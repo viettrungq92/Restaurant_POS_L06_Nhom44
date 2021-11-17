@@ -7,6 +7,18 @@
     --light-dark: #666666;
     --white-color: #ffffff;
     --dark: #a87336;
+    --error-broder: #e74c3c;
+    --success-border: #2ecc71;
+    --warning: #ffdb9b;
+    --warning-dark: #ffa502;
+    --warning-text: #ce8500;
+    --warning-close-btn: #ffd080;
+    --warning-close-btn-hover: #ffc766;
+    --success: #9bffa8;
+    --success-dark: #29da06;
+    --success-text: #22ce00;
+    --success-close-btn: #80ff80;
+    --success-close-btn-hover: #6fea5f;
 }
 
 input::-webkit-outer-spin-button,
