@@ -43,9 +43,10 @@
                 <textarea name="message" id="note" cols="65" rows="3" placeholder="Ghi chú"></textarea>
             </div>
         </div>
-        <button class="btn table-booking-btn" type="button" id="book_info">Book</button>
+        <button class="table-booking-btn" type="button" id="book_info">Book</button>
         <!-- data-bs-toggle="modal" data-bs-target="#myModal" -->
     </form>
+    <a class="check-btn">Check</a>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,6 +85,49 @@
             <div class="modal-footer d-flex justify-content-center">
                 <div class="signup-section">Not a member yet? <a class="text-info" data-bs-toggle="modal"
                         data-bs-dismiss="modal" data-bs-target="#signupModal"> Sign Up</a>.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Check Modal -->
+<div class="modal fade" id="checkModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h4>Thông tin đặt bàn</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Số điện thoại</label>
+                            <input type="text" class="form-control" id="phone-check" placeholder="0937xxxxxx"
+                                required>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error Message</small>
+                        </div>
+                        <div class="booking-history hide">
+                            <table id="table-booking-list">
+                                <tr>
+                                    <th>Số điện thoại</th>
+                                    <th>Ngày</th>
+                                    <th>Khung giờ</th>
+                                    <th>Loại bàn</th>
+                                </tr>
+                               
+                            </table>
+                        </div>
+                        <button id="check" type="button"
+                            class="btn btn-info btn-block btn-round btn-login">Tìm kiếm</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
             </div>
         </div>
     </div>

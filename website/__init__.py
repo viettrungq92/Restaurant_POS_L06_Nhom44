@@ -18,7 +18,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     with app.app_context():
-        from .models import User
+        from .models import User, Table, Booking
         db.create_all()  # Create sql tables for our data models
 
     from .models import User
@@ -43,4 +43,7 @@ def create_app():
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
+
+    from .table_book import table_book 
+    app.register_blueprint(table_book, url_prefix='/')
     return app

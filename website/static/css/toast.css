@@ -12,6 +12,7 @@
     overflow: hidden;
     border-radius: 4px;
     border-left: 8px solid var(--warning-dark);
+    z-index: 1000000;
 }
 
 .alert.success {
