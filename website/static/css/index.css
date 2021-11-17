@@ -8,6 +8,7 @@ label.error{
     display:block;
     color: red;
 }
+
 .icon-see-password-wrapper {
     display: flex;
     align-items: center;
@@ -16,5 +17,11 @@ label.error{
     justify-content: center;
     align-items: center;
     height: 38px;
+    width: 100%;
+}
+
+.block-content {
+    position: relative;
+    top: 70px;
     width: 100%;
 }
