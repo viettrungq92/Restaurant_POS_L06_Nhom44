@@ -17,7 +17,7 @@ def login_post():
     remember = True
 
     user = User.query.filter_by(email=email).first()
-    print(user.phone)
+    # print(user.phone)
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))
@@ -37,7 +37,7 @@ def signup_post():
     lastname = request.form.get('lastname')
     address = request.form.get('address')
     password = request.form.get('password')
-    phone = request.form.get('phone')
+    phone = request.form.get('phonenumber')
 
     user = User.query.filter_by(email=email).first()
 
@@ -57,4 +57,4 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('views.table'))
