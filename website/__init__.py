@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 
 def create_app():
@@ -24,7 +25,6 @@ def create_app():
 
     from .models import User
 
-    login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
