@@ -31,101 +31,21 @@
     <link rel="stylesheet" href="../static/css/header.css">
     <!-- Menu CSS  -->
     <link rel="stylesheet" href="../static/css/menu.css">
+    {% block custom_css %} {% endblock %}
     
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="row  m-0 p-0 header-row">
-            <div class="col-sm-2 m-0 p-0 logo-wrapper">
-                <img src="../static/images/logo black.png " class="logo"/>
-            </div>
+        <!-- Header -->
+        {% include 'header.html' %}
 
-            <div class="col-sm-2 p-0 m-0">
-                <div class="row p-0 m-0 menu-item">
-                    <div class="dropdown">
-                        <button class="btn-no-border menu-item"> 
-                            <img src="../static/images/menuwhite.png " class="png"/>
-                            <a class="btn p-0 white-button" type="button" id="dropdownMenuButton1" href="{{ url_for('menu.getAllDish') }}">
-                                MENU
-                            </a>
-                        </button>
-                    </div>
-
-                </div>    
-            </div> 
-
-          
-            <div class="col-sm-2 p-0 m-0">
-                <div class="row p-0 m-0 menu-item">                    
-                    <button class="btn-no-border menu-item p-0 m-0">
-                        <div class="flex">
-                            <div>
-                                <img src="../static/images/reservationwhite.png "  class="png"/>
-                            </div>
-                            <div style="margin-left: 10px;" class="white-button">RESERVATION</div>
-                        </div>
-                    </button>
-                    
-                </div>    
-            </div>
-
-            <div class="col-sm-2 p-0 m-0">
-                <div class="row p-0 m-0 menu-item">                    
-                    <button class="btn-no-border menu-item p-0 m-0">
-                        <div class="flex">
-                            <div>
-                                <img src="../static/images/contactwhite.png "  class="icon"/>
-                            </div>
-                            <div style="margin-left: 10px;" class="white-button">CONTACTS</div>
-                        </div>
-                    </button>
-                    
-                </div>    
-            </div>
-            <div class="col-sm-2" ></div>
-
-            
-            <div class="col-sm-2 p-0">
-                <div class="row m-0 p-0" style="height: 100%;">
-                    <div class="col-sm-4 p-0 m-0">
-                        <div class="row p-0 m-0 menu-item">
-                            <div class="dropdown m-0 p-0">
-                                <button class="btn-no-border menu-item white-button m-0 p-0" id="user-button"> 
-                                    <img src="../static/images/userwhite.png " class="png"/>
-                                    <div class="btn dropdown-toggle p-0 white-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    </div>
-                                </button>
-                                <ul class="dropdown-menu m-0 p-0" aria-labelledby="user-button">
-                                    <li><a class="dropdown-item" href="#">Log In</a></li>
-                                    <li><a class="dropdown-item" href="#">Register</a></li>
-                                    <li><a class="dropdown-item" href="#">Log Out</a></li>
-                                </ul>
-                            </div>
-     
-                        </div>    
-                    </div>
-                    <div class="col-sm-4 p-0 m-0">
-                        <div class="row p-0 menu-item">
-                            <button class="btn-no-border">
-                                <img id="cart-link" src="../static/images/cartwhite.png" class="icon"/>
-                            </button>
-                        </div>    
-                    </div> 
-                </div>
-               
-            </div>
-            
-            
+        <!-- Main Content -->
+        <div class="block-content">
+            {% block content %}{% endblock %}
         </div>
-    </div>
 
-    <!-- Main Content -->
-    {% block content %}{% endblock %}
 
-    <!-- Footer -->
-
+        <!-- Footer -->    
 
 
 
@@ -151,6 +71,8 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <!-- Flatpicker -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!--Validate-->
+    <script src="../static/js/jquery.validate.min.js"></script>
     <!-- JS Custom -->
     <script src="../static/js/index.js"></script>
     <!-- Table Booking Script -->

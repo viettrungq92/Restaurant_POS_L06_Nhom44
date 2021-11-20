@@ -1,12 +1,12 @@
 {% extends "index.html" %}
-{% block title %} Login {% endblock %}
+{% block title %} Admin Login {% endblock %}
 {% block content %}
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-        <form class="card margin-form full-size" id="loginForm" action="/login" method="POST">
+        <form class="card margin-form full-size" id="signupForm" action="/admin-login" method="POST">
             <header class="text-center card-header">
-                <h2>Log in to Fast Food</h2>
+                <h2>Admin</h2>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         <div class="notification alert-danger">
@@ -25,7 +25,7 @@
                             </span>
                         </div>
                         <div class="col-sm-11 m-0 p-0">
-                            <input type="text" class="form-control" placeholder="Email address or phone number" required name="user" id="user">
+                            <input type="text" class="form-control" placeholder="Email address or phone number" required name="user">
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                             </span>
                         </div>
                         <div class="col-sm-10 m-0 p-0">
-                            <input class="form-control" id="loginpassword" name="loginpassword" placeholder="Password"  type='password' required value="">
+                            <input class="form-control" id="loginpassword" name="loginpassword" placeholder="Password" required value="">
                         </div>
                         <div class="col-sm-1 m-0 p-0">
                             <span class="icon-see-password-wrapper">
@@ -58,10 +58,8 @@
                         <button class="btn btn-secondary" type="submit">Back</button>
                         <button class="btn btn-primary" type="submit">Log in</button>
                     </div>
-                    <div class="text-center mt-1">
-                        <a href="{{url_for('auth.signup')}}">Sign up for Fast Food</a>
-                    </div>
                 </div>
+
             </footer>
         </form>
     </div>
