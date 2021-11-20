@@ -53,7 +53,7 @@ $(document).ready(function () {
         ]
     }`
     // console.log(JSON.parse(tableJSON))
-    var dataStore = (function() {
+    var dataStore = (function () {
         var object;
 
         $.ajax({
@@ -62,19 +62,21 @@ $(document).ready(function () {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             async: false,
-            success: function(responseObject) {
+            success: function (responseObject) {
                 object = responseObject
                 // console.log(responseObject)
                 // console.log(object)
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error)
             }
         })
 
-        return {getObject : function() {
-            if(object) return object;
-        }}
+        return {
+            getObject: function () {
+                if (object) return object;
+            }
+        }
     })();
 
     var tableObject = $(dataStore.getObject())
@@ -93,7 +95,7 @@ $(document).ready(function () {
     //     '{"name":"Khiem","phone_number":"0924154763","date":"2021-11-08","time":"18","nop":"4","msg":"none"}]'
 
     // const tableObject = JSON.parse(json);
-    
+
     // console.log(tableObject);
 
     date_config = {
@@ -267,22 +269,23 @@ $(document).ready(function () {
                 "comment": ""
             }
             if (noteValue === "") {
-                bookingObject.msg = "";
+                bookingObject.comment = "";
             } else {
-                bookingObject.msg = note;
+                bookingObject.comment = note;
             }
             console.log(bookingObject);
             $.ajax({
                 url: bookingURL + "add",
                 method: "POST",
-                headers: {"Content-Type":"application/json"},
+                headers: { "Content-Type": "application/json" },
                 data: JSON.stringify(bookingObject),
-                success: function() {
+                success: function () {
                     $("#myModal").modal("hide")
+                    resetForm();
                     actionOfToast("show", "success", "Đặt bàn thành công!");
                     console.log("POST Success!")
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error)
                 }
             })
@@ -291,33 +294,44 @@ $(document).ready(function () {
     })
 
     // CHỨC NĂNG XEM ĐẶT BÀN THEO SỐ ĐIỆN THOẠI
-    $(".check-btn").on("click", function() {
+    $(".check-btn").on("click", function () {
+        $("#phone-check").val('');
+        $(".booking-history").removeClass("show")
+        $(".booking-history").addClass("hide")
         $("#checkModal").modal("show")
     })
 
-    $("#check").on("click", function() {
+    $("#check").on("click", function () {
+        $("#table-booking-list > tr > td").remove();
         var phoneCheck = $("#phone-check")
         var phonCheckVal = $("#phone-check").val().trim()
-        if(validateCheck(phoneCheck)) {
+        if (validateCheck(phoneCheck)) {
             $.ajax({
                 url: bookingURL + "table/" + phonCheckVal,
                 type: "GET",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 async: false,
-                success: function(responseObject) {
+                success: function (responseObject) {
                     loadBookingList(responseObject)
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error)
                 }
             })
         }
     })
 
+    function resetForm() {
+        $("#datepicker").flatpickr().clear();
+        $("#timepicker").val(0);
+        $("#peoplepicker").val(0);
+        $("#note").val('');
+    }
+
     function loadBookingList(pObject) {
         console.log(pObject)
-        if(pObject.length == 0) {
+        if (pObject.length == 0) {
             $(".booking-history").removeClass("show")
             $(".booking-history").addClass("hide")
             actionOfToast("show", "warning", "Không có bàn nào dược đặt!");
@@ -325,7 +339,7 @@ $(document).ready(function () {
             $(".booking-history").removeClass("hide")
             $(".booking-history").addClass("show")
             for (let i = 0; i < pObject.length; i++) {
-                if(pObject[i].date < 12) {
+                if (pObject[i].date < 12) {
                     var tr = ` 
                         <tr>
                             <td>${pObject[i].phone}</td>
@@ -342,7 +356,7 @@ $(document).ready(function () {
                         <td>${pObject[i].time} PM</td>
                         <td>${pObject[i].nop} người</td>
                     </tr>`
-                $("#table-booking-list").append(tr)
+                    $("#table-booking-list").append(tr)
                 }
             }
         }

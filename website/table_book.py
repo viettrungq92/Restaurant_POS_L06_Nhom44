@@ -27,6 +27,7 @@ def add_table():
     content = request.get_json()
     date = content['date']
     time = content['time']
+    name = content['name']
     phone = content['phone']
     nop = content['nop']
     comment = content['comment']
@@ -34,7 +35,7 @@ def add_table():
     # time = request.json('time')
     # phone = request.json('phone')
     # table_id = request.json('table_id')
-    new_booking = Booking(date = date, time = time, phone = phone, nop = nop, comment = comment)
+    new_booking = Booking(date = date, time = time, name = name, phone = phone, nop = nop, comment = comment)
 
     db.session.add(new_booking)
     db.session.commit()

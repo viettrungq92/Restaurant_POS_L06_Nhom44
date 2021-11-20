@@ -32,6 +32,7 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(10), nullable = False)
     time = db.Column(db.Integer, nullable = False)
+    name = db.Column(db.String(20), nullable = False)
     phone = db.Column(db.String(10), nullable = False)
     nop = db.Column(db.Integer, nullable = False)
     comment = db.Column(db.String(100), nullable= True)
