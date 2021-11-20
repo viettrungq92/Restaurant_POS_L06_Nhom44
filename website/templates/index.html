@@ -79,6 +79,13 @@
     <script type="text/javascript" src="../static/js/table.json"></script>
     <script type="text/javascript" src="../static/js/table.js"></script>
     <!-- <script src="../static/js/table.js"></script> -->
+    <script src="../static/js/fun-detail.js"></script>
+
+    <script>
+        $('#cart-link').click(function () {
+            window.location.href = `{{ url_for('cart.getCartItems')}}`
+        })
+    </script>
 </body>
 
 </html>

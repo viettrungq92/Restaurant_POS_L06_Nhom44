@@ -26,6 +26,7 @@ def login_post():
     remember = True
 
     user = User.query.filter_by(email=email).first()
+
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))
@@ -105,5 +106,6 @@ def get_current_user():
         return current_user.as_dict()
     else:
         abort(401)
+
 
 
