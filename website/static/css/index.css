@@ -25,3 +25,8 @@ label.error{
     top: 70px;
     width: 100%;
 }
+
+body {
+    position: absolute;
+    width: 100%;
+}

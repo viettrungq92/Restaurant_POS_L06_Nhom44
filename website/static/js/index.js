@@ -57,6 +57,37 @@ $( document ).ready(function() {
         
         },
     });
-    
+
+    $("#loginForm").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            loginpassword: {
+                required: true,
+            },
+
+
+        },
+        messages: {
+            email:{
+                required: "Please enter a valid email address",
+                email: "email chua dung dinh dang"
+            },
+
+            loginpassword: {
+                required: "Please provide a password",
+            },
+        },
+    });
+    getCurrentUser();
 });
+
+const getCurrentUser = () => {
+    $.get( "/current-user", function( data ) {
+        $('#headerUserName').html('Welcome ' + data.firstname + ' ' + data.lastname)
+        $('#login-register-link').hide()
+    });
+}
 

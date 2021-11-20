@@ -11,4 +11,11 @@ class User(UserMixin, db.Model):
     lastname = db.Column(db.String(1000))
     phone = db.Column(db.String(20))
     address = db.Column(db.String(1000))
+    user_role = db.Column(db.String(100))
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    def is_admin(self):
+        return self.user_role and ("admin" in self.user_role)
 

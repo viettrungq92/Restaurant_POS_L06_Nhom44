@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 
 db = SQLAlchemy()
 
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'restaurantpos'
