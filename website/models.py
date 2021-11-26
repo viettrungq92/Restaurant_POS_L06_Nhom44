@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 from datetime import datetime
 from sqlalchemy.log import Identified
 from sqlalchemy.orm import backref, base, relationship
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-=======
 from enum import unique
 import json
 from operator import imod
 from sys import stderr
->>>>>>> 5bd122a61d3b8d0dca934099aa90302e35c8c348
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import backref
