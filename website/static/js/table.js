@@ -14,6 +14,7 @@ $(document).ready(function () {
     //     .then(function (data) {
     //         console.log(data.booking)
     //     }) 
+    const bookingURL = "http://127.0.0.1:5000/"
 
     const tableJSON = `{
         "booking": [
@@ -52,21 +53,49 @@ $(document).ready(function () {
         ]
     }`
     // console.log(JSON.parse(tableJSON))
+    var dataStore = (function () {
+        var object;
 
-    const json = '[{"name":"Hiep","phone_number":"0958456781","date":"2021-11-05","time":"18","nop":"4","msg":"none"},' +
-        '{"name":"An","phone_number":"0958456461","date":"2021-11-06","time":"15","nop":"6","msg":"none"},' +
-        '{"name":"Binh","phone_number":"0924456781","date":"2021-11-05","time":"19","nop":"6","msg":"none"},' +
-        '{"name":"Chau","phone_number":"0914656781","date":"2021-11-05","time":"18","nop":"2","msg":"none"},' +
-        '{"name":"Dieu","phone_number":"0915756781","date":"2021-11-08","time":"10","nop":"2","msg":"none"},' +
-        '{"name":"Giang","phone_number":"0924456821","date":"2021-11-08","time":"12","nop":"2","msg":"none"},' +
-        '{"name":"Hai","phone_number":"0910656781","date":"2021-11-08","time":"15","nop":"4","msg":"none"},' +
-        '{"name":"Hanh","phone_number":"0924167423","date":"2021-11-08","time":"18","nop":"6","msg":"none"},' +
-        '{"name":"Kiet","phone_number":"0924412049","date":"2021-11-08","time":"18","nop":"2","msg":"none"},' +
-        '{"name":"Kiet","phone_number":"0924412049","date":"2021-11-09","time":"18","nop":"2","msg":"none"},' +
-        '{"name":"Khiem","phone_number":"0924154763","date":"2021-11-08","time":"18","nop":"4","msg":"none"}]'
+        $.ajax({
+            url: bookingURL + "all",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (responseObject) {
+                object = responseObject
+                // console.log(responseObject)
+                // console.log(object)
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
 
-    const tableObject = JSON.parse(json);
-    console.log(tableObject)
+        return {
+            getObject: function () {
+                if (object) return object;
+            }
+        }
+    })();
+
+    var tableObject = $(dataStore.getObject())
+    console.log(tableObject.length)
+
+    // const json = '[{"name":"Hiep","phone_number":"0958456781","date":"2021-11-05","time":"18","nop":"4","msg":"none"},' +
+    //     '{"name":"An","phone_number":"0958456461","date":"2021-11-06","time":"15","nop":"6","msg":"none"},' +
+    //     '{"name":"Binh","phone_number":"0924456781","date":"2021-11-05","time":"19","nop":"6","msg":"none"},' +
+    //     '{"name":"Chau","phone_number":"0914656781","date":"2021-11-05","time":"18","nop":"2","msg":"none"},' +
+    //     '{"name":"Dieu","phone_number":"0915756781","date":"2021-11-08","time":"10","nop":"2","msg":"none"},' +
+    //     '{"name":"Giang","phone_number":"0924456821","date":"2021-11-08","time":"12","nop":"2","msg":"none"},' +
+    //     '{"name":"Hai","phone_number":"0910656781","date":"2021-11-08","time":"15","nop":"4","msg":"none"},' +
+    //     '{"name":"Hanh","phone_number":"0924167423","date":"2021-11-08","time":"18","nop":"6","msg":"none"},' +
+    //     '{"name":"Kiet","phone_number":"0924412049","date":"2021-11-08","time":"18","nop":"2","msg":"none"},' +
+    //     '{"name":"Kiet","phone_number":"0924412049","date":"2021-11-09","time":"18","nop":"2","msg":"none"},' +
+    //     '{"name":"Khiem","phone_number":"0924154763","date":"2021-11-08","time":"18","nop":"4","msg":"none"}]'
+
+    // const tableObject = JSON.parse(json);
+
     // console.log(tableObject);
 
     date_config = {
@@ -82,11 +111,8 @@ $(document).ready(function () {
         }
     }
 
-    // console.log($("#user-data").html())
-    var jsonstr = '"' + $("#user-data").html() + '"';
-    var jsontest = JSON.parse($("#user-data").html())
-    console.log(jsontest);
-
+    // var jsonstr = '"' + $("#user-data").html() + '"';
+    // var jsontest = JSON.parse($("#user-data").html())
 
     flatpickr("input[type=date]", date_config)
 
@@ -125,6 +151,12 @@ $(document).ready(function () {
         let dateSelect = $("#datepicker").val();
         let timeSelect = $("#timepicker").val();
         let typeSelect = $("#peoplepicker").val();
+        // console.log(tableObject)
+        // if(tableObject[1].date == dateSelect) {
+        //     console.log("Yes");
+        // } else console.log("No")
+        // console.log(dateSelect)
+
         if (pDate != "Invalid Date" && pTime != 0 && pNop == 0) {
             // $("#datepicker").flatpickr({
             //     dateFormat: "Y-m-d",
@@ -230,21 +262,121 @@ $(document).ready(function () {
         if (validateForm(name, phone)) {
             var bookingObject = {
                 "name": nameValue,
-                "phone_number": phoneValue,
+                "phone": phoneValue,
                 "date": date,
                 "time": time,
                 "nop": type,
-                "msg": "none"
+                "comment": ""
             }
             if (noteValue === "") {
-                bookingObject.msg = "none";
+                bookingObject.comment = "";
             } else {
-                bookingObject.msg = note;
+                bookingObject.comment = note;
             }
             console.log(bookingObject);
+            $.ajax({
+                url: bookingURL + "add",
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                data: JSON.stringify(bookingObject),
+                success: function () {
+                    $("#myModal").modal("hide")
+                    resetForm();
+                    actionOfToast("show", "success", "Đặt bàn thành công!");
+                    console.log("POST Success!")
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
         }
 
     })
+
+    // CHỨC NĂNG XEM ĐẶT BÀN THEO SỐ ĐIỆN THOẠI
+    $(".check-btn").on("click", function () {
+        $("#phone-check").val('');
+        $(".booking-history").removeClass("show")
+        $(".booking-history").addClass("hide")
+        $("#checkModal").modal("show")
+    })
+
+    $("#check").on("click", function () {
+        $("#table-booking-list > tr > td").remove();
+        var phoneCheck = $("#phone-check")
+        var phonCheckVal = $("#phone-check").val().trim()
+        if (validateCheck(phoneCheck)) {
+            $.ajax({
+                url: bookingURL + "table/" + phonCheckVal,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                success: function (responseObject) {
+                    loadBookingList(responseObject)
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+    })
+
+    function resetForm() {
+        $("#datepicker").flatpickr().clear();
+        $("#timepicker").val(0);
+        $("#peoplepicker").val(0);
+        $("#note").val('');
+    }
+
+    function loadBookingList(pObject) {
+        console.log(pObject)
+        if (pObject.length == 0) {
+            $(".booking-history").removeClass("show")
+            $(".booking-history").addClass("hide")
+            actionOfToast("show", "warning", "Không có bàn nào dược đặt!");
+        } else {
+            $(".booking-history").removeClass("hide")
+            $(".booking-history").addClass("show")
+            for (let i = 0; i < pObject.length; i++) {
+                if (pObject[i].date < 12) {
+                    var tr = ` 
+                        <tr>
+                            <td>${pObject[i].phone}</td>
+                            <td>${pObject[i].date}</td>
+                            <td>${pObject[i].time} AM</td>
+                            <td>${pObject[i].nop} người</td>
+                        </tr>`
+                    $("#table-booking-list").append(tr)
+                } else {
+                    var tr = ` 
+                    <tr>
+                        <td>${pObject[i].phone}</td>
+                        <td>${pObject[i].date}</td>
+                        <td>${pObject[i].time} PM</td>
+                        <td>${pObject[i].nop} người</td>
+                    </tr>`
+                    $("#table-booking-list").append(tr)
+                }
+            }
+        }
+
+    }
+
+    function validateCheck(pPhone) {
+        var phoneCheckVal = pPhone.val().trim()
+        var check = true;
+        if (phoneCheckVal === "") {
+            check = false;
+            setBookingErrorFor(pPhone, "Vui lòng điền số điện thoại!")
+        } else if (phoneCheckVal.length != 10) {
+            check = false;
+            setBookingErrorFor(pPhone, "Số điện thoại phải là 10 số!")
+        } else {
+            setBookingSuccessFor(pPhone);
+        }
+        return check
+    }
 
     function validateForm(pName, pPhone) {
         var nameValue = pName.val().trim();
@@ -281,6 +413,18 @@ $(document).ready(function () {
     $("#phonenumber").focusout(function () {
         const phone = $("#phonenumber");
         const phoneValue = $("#phonenumber").val().trim();
+        if (phoneValue === "") {
+            setBookingErrorFor(phone, "Vui lòng điền số điện thoại!");
+        } else if (phoneValue.length != 10) {
+            setBookingErrorFor(phone, "Số điện thoại gồm 10 số!");
+        } else {
+            setBookingSuccessFor(phone);
+        }
+    })
+
+    $("#phone-check").focusout(function () {
+        const phone = $("#phone-check");
+        const phoneValue = $("#phone-check").val().trim();
         if (phoneValue === "") {
             setBookingErrorFor(phone, "Vui lòng điền số điện thoại!");
         } else if (phoneValue.length != 10) {
