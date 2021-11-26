@@ -34,11 +34,11 @@ $( document ).ready(function() {
             lastname: "Please enter your lastname",
             email:{
                 required: "Please enter a valid email address",
-                email: "email chua dung dinh dang"
+                email: "Please enter a valid email address"
             },
             numberphone: {
-                required: "Please enter your numberphone",
-                digits: "Numberphone chua dung dinh dang"
+                required: "Please enter your phone number",
+                digits: "Please enter a valid phone number"
             },
             password: {
                 required: "Please provide a password",
@@ -57,6 +57,37 @@ $( document ).ready(function() {
         
         },
     });
-    
+
+    $("#loginForm").validate({
+        rules: {
+            user: {
+                required: true,
+                email: true
+            },
+            loginpassword: {
+                required: true,
+            },
+
+
+        },
+        messages: {
+            user:{
+                required: "Please enter a valid email address",
+                email: "Please enter a valid email address"
+            },
+
+            loginpassword: {
+                required: "Please provide a password",
+            },
+        },
+    });
+    getCurrentUser();
 });
+
+const getCurrentUser = () => {
+    $.get( "/current-user", function( data ) {
+        $('#headerUserName').html('Welcome ' + data.firstname + ' ' + data.lastname)
+        $('#login-register-link').hide()
+    });
+}
 

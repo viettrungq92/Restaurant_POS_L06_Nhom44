@@ -6,11 +6,11 @@
             <!--Catagories navigation bars-->
             <div class="col-md-2" id="catagory-tab" >
                 {% set catagory_tab = [
-                        ( url_for('.display_menu', catagory='all'), null , "All"),
-                        ( url_for('.display_menu', catagory='burger'), "burger", "Burger"),
-                        ( url_for('.display_menu', catagory='chicken'), "chicken", "Chicken"),
-                        ( url_for('.display_menu', catagory='rice'), "rice", "Rice"),
-                        ( url_for('.display_menu', catagory='drinks'), "drinks", "Drinks")
+                        ( url_for('.getAllDish'), 'all' , "All"),
+                        ( url_for('.getDishByType', catagory='burger'), "burger", "Burger"),
+                        ( url_for('.getDishByType', catagory='chicken'), "chicken", "Chicken"),
+                        ( url_for('.getDishByType', catagory='rice'), "rice", "Rice"),
+                        ( url_for('.getDishByType', catagory='drinks'), "drinks", "Drinks")
                 ] %}
                 <ul class="nav flex-column">
                     {% for href,id,caption in catagory_tab%}
@@ -32,10 +32,9 @@
                                 <div class="card-body">
                                     <!-- <p> {{food.thumbnail}}</p> -->
                                     <p class="card-text">{{ food.name }}</p>
-                                    <h5 class="card-title">{{ food.price }}vnd</h5>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <h5 class="card-title">{{ food.price }} vnd</h5>
                                     <!-- <a class="btn" href="menu/?id={{food.id}}">Details</a> -->
-                                    <a class="btn" href="{{url_for('.details')}}?id={{food.id}}&type={{food.type}}" id="detailpage">Details</a>
+                                    <button class="btn" onclick="gotoDetail('{{food.id}}')" >Details</button>
                                 </div>
                             </div>
                         </div>
@@ -44,38 +43,14 @@
             </div>
         </div>
     </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- Bootstrap v5.1 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <!-- JS Custom -->
-    <!-- <script src="../static/js/index.js"></script> -->
-    <!-- <script>
-
-        let btns = document.getElementsByClassName("btn");
-        for (let i=0; i<btns.length; ++i){
-            btns[i].addEventListener("mouseover", function() {
-                btns[i].style.display = "block";
-            })
-            btns[i].addEventListener("mouseout", function() {
-                btns[i].style.display = "none";
-            })
+    <script>
+        function gotoDetail(dish_id) {
+            window.location.href = `{{url_for('details.getDishDetail')}}?id=${dish_id}`
         }
-    </script> -->
+    </script>
 {% endblock %}

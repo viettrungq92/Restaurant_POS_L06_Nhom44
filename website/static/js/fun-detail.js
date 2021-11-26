@@ -3,12 +3,12 @@ $(document).ready(function() {
         document.getElementById("img-large").src = "images/item0" + image + ".jpg";
     }
     
-    function wcqib_refresh_quantity_increments() {
-        jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
-            var c = jQuery(b);
-            c.addClass("buttons_added"), c.children().first().before('<input type="button" value="-" class="minus" />'), c.children().last().after('<input type="button" value="+" class="plus" />')
-        })
-    }
+    // function wcqib_refresh_quantity_increments() {
+    //     jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
+    //         var c = jQuery(b);
+    //         c.addClass("buttons_added"), c.children().first().before('<input type="button" value="-" class="minus" />'), c.children().last().after('<input type="button" value="+" class="plus" />')
+    //     })
+    // }
 
     String.prototype.getDecimals || (String.prototype.getDecimals = function() {
         var a = this,
@@ -27,66 +27,89 @@ $(document).ready(function() {
         b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
     });
 
-    // GLOBAL VARIABLE
-    var jsonObject = localStorage.getItem("foodId");
-    var parseToObject = JSON.parse(jsonObject);
+    // // GLOBAL VARIABLE
+    // var jsonObject = localStorage.getItem("foodId");
+    // var parseToObject = JSON.parse(jsonObject);
     
     // add to cart
-    checkFoodInLocal();
-    function checkFoodInLocal() {
-        var jsonObject = localStorage.getItem("foodId");
-        var parseToObject = JSON.parse(jsonObject);
-        if(!parseToObject) {
-            $(".badge").remove();
-        } else {
-            addBadgeNumber(parseToObject);
-        }
-        console.log(!parseToObject);
-    }
+    // checkFoodInLocal();
+    // function checkFoodInLocal() {
+    //     var jsonObject = localStorage.getItem("foodId");
+    //     var parseToObject = JSON.parse(jsonObject);
+    //     if(!parseToObject) {
+    //         $(".badge").remove();
+    //     } else {
+    //         addBadgeNumber(parseToObject);
+    //     }
+    //     console.log(!parseToObject);
+    // }
 
 
-    $("#addCartBtn").on("click", function() {
-        var gUrlString = window.location.href;
-        var gUrl = new URL(gUrlString);
-        var gFoodId = gUrl.searchParams.get("id");
-        var qty = $("#qty").val();
-        addToLocalStorage(gFoodId, qty);
-        console.log(gFoodId, qty);
+    // $("#addCartBtn").on("click", function() {
+    //     var gUrlString = window.location.href;
+    //     var gUrl = new URL(gUrlString);
+    //     var gFoodId = gUrl.searchParams.get("id");
+    //     var qty = $("#qty").val();
+    //     addToLocalStorage(gFoodId, qty);
+    //     console.log(gFoodId, qty);
+    // })
+
+    // function addBadgeNumber(pObject) {
+    //     var badge = `
+    //     <span class="badge bg-danger rounded-circle">${pObject.length}</span> 
+    //     `;
+    // $(".cart").append(badge);
+    // }
+
+    // function addToLocalStorage(pFoodId, pQty) {
+    //     var foodObjectToLocal = {
+    //         id: pFoodId,
+    //         qty: pQty
+    //     }
+    //     if(!parseToObject) {
+    //         parseToObject = [];
+    //         parseToObject.push(foodObjectToLocal);
+    //         window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
+    //     } else {
+    //         for(let i = 0; i < parseToObject.length; i++) {
+    //             if(pFoodId === parseToObject[i].id) {
+    //                 parseToObject[i].qty++;
+    //             } else if (i == parseToObject.length - 1 && pFoodId != parseToObject[i].id) {
+    //                 addCartItemToCartList(foodObjectToLocal);
+    //                 break;
+    //             }
+    //         }
+    //         window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
+    //     }
+    //     checkFoodInLocal();
+    // }
+
+    // function addCartItemToCartList (paramObject) {
+    //     parseToObject.push(paramObject);
+    //     window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
+    // }
+    $('#plus').click( function() {
+        plusHandler();
     })
 
-    function addBadgeNumber(pObject) {
-        var badge = `
-        <span class="badge bg-danger rounded-circle">${pObject.length}</span> 
-        `;
-    $(".cart").append(badge);
+    function plusHandler(){
+        var qty = $('#qty');
+        if (qty.val() < 100){
+            // console.log(qty.val())
+            qty.val(Number(qty.val()) + 1)
+        }
     }
 
-    function addToLocalStorage(pFoodId, pQty) {
-        var foodObjectToLocal = {
-            id: pFoodId,
-            qty: pQty
+    document.getElementById("minus").addEventListener("click", function () {
+        // console.log(btn)
+        minusHandler();
+    })
+    
+    function minusHandler(){
+        var qty = $('#qty');
+        if (qty.val() > 1){
+            qty.val(Number(qty.val()) - 1)
         }
-        if(!parseToObject) {
-            parseToObject = [];
-            parseToObject.push(foodObjectToLocal);
-            window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
-        } else {
-            for(let i = 0; i < parseToObject.length; i++) {
-                if(pFoodId === parseToObject[i].id) {
-                    parseToObject[i].qty++;
-                } else if (i == parseToObject.length - 1 && pFoodId != parseToObject[i].id) {
-                    addCartItemToCartList(foodObjectToLocal);
-                    break;
-                }
-            }
-            window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
-        }
-        checkFoodInLocal();
-    }
-
-    function addCartItemToCartList (paramObject) {
-        parseToObject.push(paramObject);
-        window.localStorage.setItem("foodId", JSON.stringify(parseToObject));
     }
 })
 

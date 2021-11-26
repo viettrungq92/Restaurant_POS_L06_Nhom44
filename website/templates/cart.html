@@ -34,23 +34,23 @@
             <div class="cart-detail-content">
                 
                 <div class="cart-detail-img">
-                    <img src="{{ food.image }}" alt="">
+                    <img src="{{ food.dish.thumbnail }}" alt="">
                 </div>
                 <div class="cart-detail-short">
-                    <h5>{{ food.name }}</h5>
+                    <h5>{{ food.dish.name }}</h5>
                 </div>
                 <div class="cart-detail-price">
-                    <span> {{ food.price }} &#8363;</span>
+                    <span> {{ food.dish.price }} &#8363;</span>
                     </span>
                 </div>
                 <div class="cart-detail-quantity">
                     <button class="cart-detail-minus" type="submit">-</button>
-                    <input type="number" min="1" step="1" value="{{ food.quantity }}">
+                    <input type="number" class="cart-detail-number" min="1" step="1" value="{{ food.quantity }}">
                     <button class="cart-detail-plus" type="submit">+</button>
                 </div>
                 <div class="cart-detail-total">
-                    <span> {{ food.price * food.quantity}} &#8363;</span>
-                    <i class="fas fa-trash-alt"></i>
+                    <span> {{ food.calPrice() }} &#8363;</span>
+                    <i class="fas fa-trash-alt" onclick="removeItem('{{food.order_id}}', '{{food.dish_id}}')"></i>
                 </div>
                 
             </div>
@@ -81,7 +81,7 @@
             </div> -->
             <!-- Back To Shop Button Start -->
             <div class="cart-detail-button">
-                <a href=" {{ url_for('menu.display_menu', catagory = 'all') }}">&#8592; Back To Store</a>
+                <a href=" {{ url_for('menu.getAllDish') }}">&#8592; Back To Store</a>
             </div>
             <!-- Back To Shop Button End -->
 
@@ -122,7 +122,7 @@
                         <span>The total amount of (Including VAT): </span>
                     </div>
                     <div class="col-sm-5 cart-total-value">
-                        <span id="total-price">0 &#8363;</span>
+                        <span id="total-price">{{total*110//100}} &#8363;</span>
                     </div>
                     <button class="btn cart-total-btn" type="button" data-bs-toggle="modal"
                         data-bs-target="#checkout-modal"><i class="fas fa-money-bill-wave"></i> Checkout</button>
@@ -132,5 +132,12 @@
     </div>
 
     {% include "Checkout.html" %}
+
+    <script>
+        function removeItem(oid, did){
+            location.href=`{{ url_for('.removeItem') }}?dish_id=${did}`
+        }
+ 
+    </script>
 </div>
 {% endblock %}
