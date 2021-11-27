@@ -91,3 +91,14 @@ const getCurrentUser = () => {
     });
 }
 
+const toggleShowPassword = () => {
+    const passwordInput = document.getElementById('password');
+    const togglePasswordIcon = document.getElementById('togglePassword');
+    if(passwordInput.type === "password") {
+        passwordInput.type = "text";
+        togglePasswordIcon.className = "fa fa-eye-slash"
+    } else {
+        passwordInput.type = "password";
+        togglePasswordIcon.className = "far fa-eye"
+    }
+}
