@@ -72,7 +72,7 @@ def checkout():
 
 @cart.route('/order-all', methods=['GET'])
 def getAllOrder():
-    all_order = Order.query.all()
+    all_order = Order.getAllPending()
     contactsArr = []
     for contact in all_order:
         contactsArr.append(contact.toDict()) 
