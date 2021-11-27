@@ -115,7 +115,6 @@ $(document).ready(function() {
         $.ajax({
             url: orderAllAPI + "order-remove/" + orderID,
             type: "GET",
-            dataType: 'json',
             error: function (error) {
                 console.log(error.responseText);
             }

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+--root {
+    --red-price: #f57134;
+}
 .main-contain {
     position: relative;
     top: 70px;

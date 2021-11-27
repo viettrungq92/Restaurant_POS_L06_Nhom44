@@ -4,23 +4,33 @@
                 <img src="../static/images/logo black.png " class="logo"/>
             </div>
 
-            <div class="col-sm-2 p-0 m-0">
+            <!-- <div class="col-sm-2 p-0 m-0">
                 <div class="row p-0 m-0 menu-item">
                     <div class="dropdown">
-                        <a class="flex" id="dropdownMenuButton1" href="{{ url_for('menu.getAllDish') }}" style="text-decoration: none;"> 
+                        <button class="btn-no-border menu-item"> 
                             <img src="../static/images/menuwhite.png " class="png"/>
-
                             <a class="btn p-0 white-button" type="button" id="dropdownMenuButton1" href="{{ url_for('menu.getAllDish', catagory='all') }}">
-
-                            <div class="p-0 white-button">
-
                                 MENU
-                            </div>
-                        </a>
+                            </a>
+                        </button>   
                     </div>
 
                 </div>    
-            </div> 
+            </div>  -->
+
+            <div class="col-sm-2 p-0 m-0">
+                <div class="row p-0 m-0 menu-item">                    
+                    <button class="btn-no-border menu-item p-0 m-0">
+                        <a class="flex" style="text-decoration: none;" href=" {{ url_for('menu.getAllDish', catagory='all') }}">
+                            <div>
+                                <img src="../static/images/menuwhite.png "  class="png"/>
+                            </div>
+                            <div style="margin-left: 10px;" class="white-button">MENU</div>
+                        </a>
+                    </button>
+                    
+                </div>    
+            </div>
 
           
             <div class="col-sm-2 p-0 m-0">
@@ -78,10 +88,11 @@
                     </div>
                     <div class="col-sm-4 p-0 m-0">
                         <div class="row p-0 menu-item">
-                            <a class="btn-no-border" style="text-decoration: none;" href=" {{ url_for('cart.getCartItems') }}">
+                            <button class="cart btn-no-border">
                                 <img src="../static/images/cartwhite.png" class="icon"/>
-                            </a>
-                        </div>   
+                                <!-- <span class="badge bg-danger rounded-circle">2</span> -->
+                            </button>
+                        </div>    
                     </div> 
                 </div>
                

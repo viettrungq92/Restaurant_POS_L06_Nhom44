@@ -9,7 +9,7 @@
             <div class="col-md-6">
                 <div class="box-large">
                     <div class="box-top">
-                        <img id="img-large" class="img-fluid" src="{{ food.thumbnail }}" alt="Hinh">
+                        <img id="img-large" class="img-detail" src="{{ food.thumbnail }}" alt="Hinh">
                     </div>
                     <!-- <div class="box-bottom">
                         <div>
@@ -30,7 +30,7 @@
 
             <div class="col-md-4 description">
                 <h2>{{ food.name }}</h2>
-                <h2 class="price">{{ food.price }}</h2>
+                <h2 class="price">{{ food.price }} &#8363;</h2>
 
                 <div class="quantity buttons_added">
                     <input type="button" value='-' id="minus">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div>
-                    <button id="addCartBtn" class="btn btn-primary" type="button" >Add to cart</button>
+                    <button id="addCartBtn" class="btn btn-primary" type="button" ><i class="fas fa-cart-plus"></i> Add to cart</button>
                 </div>
             </div>
         </div>

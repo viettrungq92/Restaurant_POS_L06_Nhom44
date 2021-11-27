@@ -1,7 +1,7 @@
 from operator import imod
 from flask import Blueprint, redirect, render_template, url_for, request, abort, make_response, jsonify
 from flask_login import current_user
-from website import db
+from website import db, auth
 from website.models import OrderForm, Order, OrderItem, Dish
 
 cart = Blueprint("cart", __name__)
@@ -91,7 +91,7 @@ def getDishByOrderId(id):
 @cart.route('/order-remove/<int:id>', methods=['GET'])
 def updateOrderStatus(id):
     Order.query.get(id).cancel()
-    return redirect('url_for(auth.users_manager)')
+    return redirect(url_for(auth.users_manager))
 
 
 @cart.route('/dish/<int:id>', methods=['GET'])
