@@ -56,7 +56,7 @@ def createItem():
         else:
             item.updateQuantity( item.quantity + quantity )
             
-        return redirect( url_for('.getDishDetail', id=dish_id))
+        return redirect('/menu/all')
     except Exception as e:
         print(e)
         return {e}

@@ -11,7 +11,7 @@ from flask import json
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import backref
-from wtforms import StringField, EmailField, RadioField
+from wtforms import StringField, RadioField, IntegerField
 from wtforms.validators import InputRequired
 from datetime import datetime
 
@@ -42,10 +42,7 @@ class User(UserMixin, db.Model):
     
 
 class OrderForm(FlaskForm):
-    fname = StringField('First Name', validators=[ InputRequired()])
-    lname = StringField('Last Name', validators=[ InputRequired()])
-    email = EmailField('Email', validators=[ InputRequired()])
-    phoneNum = StringField('Phone number', validators=[ InputRequired()])
+    phoneNum = IntegerField('Phone number', validators=[ InputRequired()])
     address = StringField('Address', validators=[ InputRequired()])
     method = RadioField('Payment method', choices=[
         ("cash", "Cash"),
@@ -138,8 +135,9 @@ class Order(db.Model):
             elif self.status == 2:
                 raise Exception("Error: Order has already been fullfilled")
             else:
-                self.status == -1
+                self.status = -1
                 db.session.commit()
+                # print("Commiting...")
         except Exception as e:
             print(e)
     

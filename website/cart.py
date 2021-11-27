@@ -58,7 +58,7 @@ def checkout():
             address = address,
             method = method
         )
-        resp = make_response( redirect( url_for(".getCartItems") ) )
+        resp = make_response( redirect("/menu/all") )
         if current_user.is_authenticated:
             print("User loged in")
             current_user.cart_id = None
@@ -72,7 +72,7 @@ def checkout():
 
 @cart.route('/order-all', methods=['GET'])
 def getAllOrder():
-    all_order = Order.query.all()
+    all_order = Order.getAllPending()
     contactsArr = []
     for contact in all_order:
         contactsArr.append(contact.toDict()) 
@@ -89,10 +89,18 @@ def getDishByOrderId(id):
     return jsonify(dishArr)
 
 @cart.route('/order-remove/<int:id>', methods=['GET'])
-def updateOrderStatus(id):
-    Order.query.get(id).cancel()
-    return redirect(url_for(auth.users_manager))
+def canelOrder(id):
+    order = Order.query.get(id)
+    print(order.status)
+    order.cancel()
+    return redirect( url_for('auth.users_manager'))
 
+
+@cart.route('/order-fullfill/<int:id>', methods=['GET'])
+def fullfillOrder(id):
+    order = Order.query.get(id)
+    order.fullfill()
+    return redirect( url_for('auth.users_manager'))
 
 @cart.route('/dish/<int:id>', methods=['GET'])
 def getDishById(id):

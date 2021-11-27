@@ -84,7 +84,8 @@ $(document).ready(function() {
         var selectedRow = $(btn).parents("tr");
         var selectedDataTableRow = orderTable.row(selectedRow);
         var orderData = selectedDataTableRow.data();
-        orderID = btn.id
+        orderID = orderData.id
+        console.log(orderData)
         $("#myModal").modal("show")
         getDishByOrderId(orderData.id)
     }
@@ -112,13 +113,26 @@ $(document).ready(function() {
     }
 
     $("#remove-order").on("click", function () {
+        console.log("Removing...")
+        console.log(orderID)
         $.ajax({
             url: orderAllAPI + "order-remove/" + orderID,
             type: "GET",
-            error: function (error) {
-                console.log(error.responseText);
-            }
-        });
+            dataType: 'json',
+        });     
+        // $("#myModal").modal("hide")   
+        location.reload();
     })
     
+    $("#btn-checkout").on("click", function () {
+        console.log("Updateing")
+        console.log(orderID)
+        $.ajax({
+            url: orderAllAPI + "order-fullfill/" + orderID,
+            type: "GET",
+            dataType: 'json',
+        });        
+        // $("#myModal").modal("hide")
+        location.reload();
+    })
 })
