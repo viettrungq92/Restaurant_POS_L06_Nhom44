@@ -1,6 +1,8 @@
 $(document).ready(function() {
     const orderAllAPI = "http://127.0.0.1:5000/cart/"
 
+    var orderID;
+
     var orderTable = $("#order-list-table").DataTable({
         columns: [
             {
@@ -82,6 +84,7 @@ $(document).ready(function() {
         var selectedRow = $(btn).parents("tr");
         var selectedDataTableRow = orderTable.row(selectedRow);
         var orderData = selectedDataTableRow.data();
+        orderID = btn.id
         $("#myModal").modal("show")
         getDishByOrderId(orderData.id)
     }
@@ -107,5 +110,16 @@ $(document).ready(function() {
         dishTable.rows.add(paramObject);
         dishTable.draw();
     }
+
+    $("#remove-order").on("click", function () {
+        $.ajax({
+            url: orderAllAPI + "order-remove/" + orderID,
+            type: "GET",
+            dataType: 'json',
+            error: function (error) {
+                console.log(error.responseText);
+            }
+        });
+    })
     
 })
