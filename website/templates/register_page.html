@@ -2,8 +2,10 @@
 {% block title %} Register {% endblock %}
 {% block content %}
 <!-- Modal -->
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<div class="authentication-common-wrapper">
+    <div class="background"></div>
+    <div class="register-form">
+        
             <form id="signupForm" class="card margin-form full-size" action="/signup" method="POST">
                 <header class="text-center card-header">
                     <h2>Create a new account</h2>
@@ -40,7 +42,7 @@
                                 <div class="col-sm-11 m-0 p-0">
                                     <input type='password' id="password" name="password" placeholder="Please enter your password" class="form-control" required>
                                 </div>
-                                <div class="col-sm-1 m-0 p-0">
+                                <div class="col-sm-1 m-0 p-0" onclick="toggleShowPassword()">
                                     <span class="icon-see-password-wrapper">
                                         <i class="far fa-eye" id="togglePassword" style="cursor: pointer"></i>
                                     </span>
@@ -63,11 +65,11 @@
                 </section>
 
                 <footer class="text-center card-footer">
-                    <button class="btn btn-secondary" type="submit">Back</button>
                     <button class="btn btn-primary" type="submit">Sign Up</button>
                 </footer>
             </form>
-        </div>
+        
 
     </div>
+</div>
 {% endblock %}
