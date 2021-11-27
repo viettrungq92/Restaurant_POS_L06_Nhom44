@@ -2,6 +2,7 @@ from enum import unique
 import json
 from operator import imod
 from sys import stderr
+from flask import json
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import backref
@@ -128,8 +129,26 @@ class Order(db.Model):
                 db.session.commit()
         except Exception as e:
             print(e)
+    
+    @classmethod
+    def getAllOrder(cls):
+        return (cls.query.all())
 
+    @classmethod
+    def getAllPending(cls):
+        return cls.query.filter_by(status = cls.PENDING)
 
+    def getCartItems(self):
+        try:
+            if not self.isCart():
+                raise Exception("This is not a cart")
+            else:
+                self.getOrderItems()
+        except Exception as e:
+            print(e)
+    
+    def getOrderItems(self):
+        return self.items
 
 class OrderItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), primary_key=True)
