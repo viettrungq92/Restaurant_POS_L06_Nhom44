@@ -84,15 +84,15 @@ def getDishByOrderId(id):
     dishArr = []
     for item in orderItem:
         dish = getDishById(item.dish_id)
-        dish.quantity = item.quantity
+        dish['quantity'] = item.quantity
         dishArr.append(dish)
     return jsonify(dishArr)
 
 
 @cart.route('/dish/<int:id>', methods=['GET'])
 def getDishById(id):
-    dish = Dish.query.filter_by(id=id)
-    return dish.ToDict()
+    dish = Dish.query.get(id)
+    return dish.toDict()
 
 @cart.route('/delete')
 def removeItem():

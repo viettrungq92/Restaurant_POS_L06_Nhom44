@@ -33,6 +33,23 @@ $(document).ready(function() {
         ]
     })
 
+    var dishTable = $("#dish-list-table").DataTable({
+        columns: [
+            {
+                data: "id"
+            }, 
+            {
+                data: "name"
+            },
+            {
+                data: "price"
+            },
+            {
+                data: "quantity"
+            }
+        ]
+    })
+
     $("#order-list-table").on("click", ".order-detail", function () {
         orderDetailHandle(this);
     })
@@ -83,6 +100,12 @@ $(document).ready(function() {
                 console.log(error.responseText);
             }
         });
+    }
+
+    function loadDishDataTable(paramObject) {
+        dishTable.clear();
+        dishTable.rows.add(paramObject);
+        dishTable.draw();
     }
     
 })
