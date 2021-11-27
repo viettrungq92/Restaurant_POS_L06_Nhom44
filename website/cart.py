@@ -1,7 +1,7 @@
 from operator import imod
 from flask import Blueprint, redirect, render_template, url_for, request, abort, make_response, jsonify
 from flask_login import current_user
-from website import db
+from website import db, auth
 from website.models import OrderForm, Order, OrderItem, Dish
 
 cart = Blueprint("cart", __name__)
@@ -94,6 +94,7 @@ def canelOrder(id):
     print(order.status)
     order.cancel()
     return redirect( url_for('auth.users_manager'))
+
 
 @cart.route('/order-fullfill/<int:id>', methods=['GET'])
 def fullfillOrder(id):
