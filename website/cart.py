@@ -1,8 +1,8 @@
 from operator import imod
-from flask import Blueprint, redirect, render_template, url_for, request, abort, make_response
+from flask import Blueprint, redirect, render_template, url_for, request, abort, make_response, jsonify
 from flask_login import current_user
 from website import db
-from website.models import OrderForm, Order, OrderItem
+from website.models import OrderForm, Order, OrderItem, Dish
 
 cart = Blueprint("cart", __name__)
 
@@ -69,6 +69,30 @@ def checkout():
     except Exception as e:
         print(e)
         abort(428)
+
+@cart.route('/order-all', methods=['GET'])
+def getAllOrder():
+    all_order = Order.query.all()
+    contactsArr = []
+    for contact in all_order:
+        contactsArr.append(contact.toDict()) 
+    return jsonify(contactsArr)
+    
+@cart.route('/order-item/<int:id>', methods=['GET'])
+def getDishByOrderId(id):
+    orderItem = OrderItem.query.filter_by(order_id=id)
+    dishArr = []
+    for item in orderItem:
+        dish = getDishById(item.dish_id)
+        dish.quantity = item.quantity
+        dishArr.append(dish)
+    return jsonify(dishArr)
+
+
+@cart.route('/dish/<int:id>', methods=['GET'])
+def getDishById(id):
+    dish = Dish.query.filter_by(id=id)
+    return dish.ToDict()
 
 @cart.route('/delete')
 def removeItem():

@@ -11,8 +11,8 @@ login_manager = LoginManager()
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'restaurantpos'
-    # uri = 'postgres://qebksjfwnxfqta:a7dc4725ed1576342d95906bdd69a574bea5b4e0c5c59df1b38d9d27a7ff35cf@ec2-52-204-72-14.compute-1.amazonaws.com:5432/d3s8ata3795je8'
-    uri = "postgresql+psycopg2://postgres:PosPassword@localhost:5432/Res_Pos"
+    uri = 'postgres://qebksjfwnxfqta:a7dc4725ed1576342d95906bdd69a574bea5b4e0c5c59df1b38d9d27a7ff35cf@ec2-52-204-72-14.compute-1.amazonaws.com:5432/d3s8ata3795je8'
+    #uri = "postgresql+psycopg2://postgres:PosPassword@localhost:5432/Res_Pos"
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config['SQLALCHEMY_DATABASE_URI'] = uri
