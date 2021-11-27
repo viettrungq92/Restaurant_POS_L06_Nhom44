@@ -48,7 +48,7 @@ def admin_login_post():
 
     login_user(user, remember=remember)
 
-    return redirect('/')
+    return redirect(url_for('auth.users_manager'))
 
 
 @auth.route('/signup')
@@ -96,7 +96,7 @@ def profile():
 @auth.route('/users-manager')
 @admin_required()
 def users_manager():
-   return "Hello"
+   return render_template('admin-page.html')
 
 
 

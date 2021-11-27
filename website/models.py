@@ -163,6 +163,7 @@ class Order(db.Model):
     def getOrderItems(self):
         return self.items
 
+
 class OrderItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), primary_key=True)
     dish_id = db.Column(db.Integer, db.ForeignKey('dish.id'), primary_key=True)
