@@ -88,6 +88,11 @@ def getDishByOrderId(id):
         dishArr.append(dish)
     return jsonify(dishArr)
 
+@cart.route('/order-remove/<int:id>', methods=['GET'])
+def updateOrderStatus(id):
+    Order.query.get(id).cancel()
+    return redirect('url_for(auth.users_manager)')
+
 
 @cart.route('/dish/<int:id>', methods=['GET'])
 def getDishById(id):
