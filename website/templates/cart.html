@@ -126,7 +126,7 @@
                         <span id="total-price">{{total*110//100}} &#8363;</span>
                     </div>
                     <button id="ckbtn" class="btn cart-total-btn" type="button" data-bs-toggle="modal"
-                        data-bs-target="#checkout-modal"><i class="fas fa-money-bill-wave"></i> Checkout</button>
+                        data-bs-target="#checkout-modal"  {% if  (foods | length) == 0 %} disabled {%endif%}><i class="fas fa-money-bill-wave"></i> Checkout</button>
                 </div>
             </div>
         </div>
@@ -152,9 +152,10 @@
             updateTotal(this);
         })
 
-        $("#ckbtn").on("click", function() {
-            updateQuantityFood();
-        })
+        // $("#ckbtn").on("click", function() {
+        //     updateQuantityFood();
+        // })
+        window.onbeforeunload = function() {updateQuantityFood()}
 
         function minusHandle(param) {
             var numberOfProduct = $(param).parent().children(".cart-detail-number").val();
@@ -210,8 +211,8 @@
                 "data": []
             }
             for (let i = 0; i < quantityElement.length; i++) {
-                let id = quantityElement[i].dataset.id
-                let qty = quantityElement[i].value
+                let id = parseInt(quantityElement[i].dataset.id)
+                let qty = parseInt(quantityElement[i].value)
                 let subobject = {
                     "id": id,
                     "quantity": qty

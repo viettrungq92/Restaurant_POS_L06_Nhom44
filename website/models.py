@@ -36,8 +36,7 @@ class User(UserMixin, db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def is_admin(self):
-        return self.user_role and ("admin" in self.user_role)
-          
+        return self.user_role and ("admin" in self.user_role)          
         
     
 
@@ -157,9 +156,6 @@ class Order(db.Model):
                 self.getOrderItems()
         except Exception as e:
             print(e)
-    
-    def getOrderItems(self):
-        return self.items
 
 
 class OrderItem(db.Model):

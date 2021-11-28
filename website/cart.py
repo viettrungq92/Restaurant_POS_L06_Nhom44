@@ -123,19 +123,25 @@ def removeItem():
         print(e)
         abort(428)
 
-@cart.route('/update-quantity', methods=['POST'])
+@cart.route('/update-quantity', methods=['PUT'])
 def updateQuantity():
     data = request.json
-    print(type(data))
+    print(data)
     try:
-        if current_user.is_authenticated:
-            cartID = current_user.cart_id
-        else:
-            cartID = request.cookies.get('cart_id')
-        for item in data:
-            pass
-            # cartItem = OrderItem.query.get((cartID, item['id']))
-            # cartItem.updateQuantity(item['quantity'])
+        try:
+            if current_user.is_authenticated:
+                cartID = current_user.cart_id
+            else:
+                cartID = request.cookies.get('cart_id')
+            if cartID == None or cartID == '':
+                raise Exception("Cannot find user cart")
+        except Exception as e:
+            print("Error")
+            return e
+        for item in data.get('data'):
+            print(item)
+            cartItem = OrderItem.query.get( (cartID, item['id']) )
+            cartItem.updateQuantity(item['quantity'])
 
         return jsonify({'message' : 'Updated cart'})
     except Exception as e:

@@ -31,7 +31,7 @@
             <div class="col-md-4 description">
                 <h2>{{ food.name }}</h2>
 
-                <h2 class="price">{{ food.price }} &#8363;</h2>
+                <h2 class="price">{{ "{:,.0f}".format(food.price) }} &#8363;</h2>
 
 
                 <div class="quantity buttons_added">

@@ -32,7 +32,8 @@
                                 <div class="card-body">
                                     <!-- <p> {{food.thumbnail}}</p> -->
                                     <p class="card-text">{{ food.name }}</p>
-                                    <h5 class="card-title">{{ food.price }} &#8363</h5>
+                                    <!-- <h5 class="card-title">{{ food.price }} &#8363</h5> -->
+                                    <h5 class="card-title">{{ "{:,.0f}".format(food.price) }} &#8363</h5>
                                     <!-- <a class="btn" href="menu/?id={{food.id}}">Details</a> -->
                                     <button class="btn" onclick="gotoDetail('{{food.id}}')" >Details</button>
                                 </div>
