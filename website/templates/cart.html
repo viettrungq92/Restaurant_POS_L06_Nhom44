@@ -32,7 +32,7 @@
             </div>
             {% for food in foods %}
             <div class="cart-detail-content">
-                
+
                 <div class="cart-detail-img">
                     <img src="{{ food.dish.thumbnail }}" alt="">
                 </div>
@@ -40,19 +40,20 @@
                     <h5>{{ food.dish.name }}</h5>
                 </div>
                 <div class="cart-detail-price">
-                    <span> {{ food.dish.price }} &#8363;</span>
+                    <span class="price-food"> {{ food.dish.price }} &#8363;</span>
                     </span>
                 </div>
                 <div class="cart-detail-quantity">
-                    <!-- <button class="cart-detail-minus" type="submit">-</button> -->
-                    <input type="number" class="cart-detail-number" min="1" step="1" value="{{ food.quantity }}">
-                    <!-- <button class="cart-detail-plus" type="submit">+</button> -->
+                    <button class="cart-detail-minus" type="submit">-</button>
+                    <input data-id="{{ food.dish_id }}" type="number" class="cart-detail-number" min="1" step="1"
+                        value="{{ food.quantity }}">
+                    <button class="cart-detail-plus" type="submit">+</button>
                 </div>
                 <div class="cart-detail-total">
-                    <span> {{ food.calPrice() }} &#8363;</span>
+                    <span class="sub-total"> {{ food.calPrice() }} &#8363;</span>
                     <i class="fas fa-trash-alt" onclick="removeItem('{{food.order_id}}', '{{food.dish_id}}')"></i>
                 </div>
-                
+
             </div>
             {% endfor %}
 
@@ -124,7 +125,7 @@
                     <div class="col-sm-5 cart-total-value">
                         <span id="total-price">{{total*110//100}} &#8363;</span>
                     </div>
-                    <button class="btn cart-total-btn" type="button" data-bs-toggle="modal"
+                    <button id="ckbtn" class="btn cart-total-btn" type="button" data-bs-toggle="modal"
                         data-bs-target="#checkout-modal"><i class="fas fa-money-bill-wave"></i> Checkout</button>
                 </div>
             </div>
@@ -134,37 +135,106 @@
     {% include "Checkout.html" %}
 
     <script>
-
-        function removeItem(oid, did){
-            location.href=`{{ url_for('.removeItem') }}?dish_id=${did}`
+        function removeItem(oid, did) {
+            location.href = `{{ url_for('.removeItem') }}?dish_id=${did}`
         }
-        $(".cart-detail-quantity").on("click", ".cart-detail-plus", function () {
-            plusHandle(this);
-        })
-        
+
+    </script>
+    {% block script %}
+    <script>
         $(".cart-detail-quantity").on("click", ".cart-detail-minus", function () {
             minusHandle(this);
+            updateTotal(this);
         })
 
-        function plusHandle(param) {
-            console.log("plus");
-            var numberOfProduct = $(param).parent().children(".quantity").val();
-            var productId = $(param).parent().children(".quantity").data("id");
-            console.log(numberOfProduct);
-            numberOfProduct++;
-            $(param).parent().children(".quantity").val(numberOfProduct);
-        }
+        $(".cart-detail-quantity").on("click", ".cart-detail-plus", function () {
+            plusHandle(this);
+            updateTotal(this);
+        })
+
+        $("#ckbtn").on("click", function() {
+            updateQuantityFood();
+        })
 
         function minusHandle(param) {
-            var numberOfProduct = $(param).parent().children(".quantity").val();
-            var productId = $(param).parent().children(".quantity").data("id");
+            var numberOfProduct = $(param).parent().children(".cart-detail-number").val();
+            var productId = $(param).parent().children(".cart-detail-number").data("id");
             if (numberOfProduct == 1) {
                 $(param).css("cursor", "default");
             } else if (numberOfProduct > 1) {
                 numberOfProduct--;
-                $(param).parent().children(".quantity").val(numberOfProduct);
+
+                $(param).parent().children(".cart-detail-number").val(numberOfProduct);
             }
+            //updateQuantity(productId, numberOfProduct);
+            //console.log($(param).parent().children(".cart-detail-number").val());
         }
+
+        function plusHandle(param) {
+            console.log("plus");
+            var numberOfProduct = $(param).parent().children(".cart-detail-number").val();
+            var productId = $(param).parent().children(".cart-detail-number").data("id");
+            //console.log(numberOfProduct);
+            numberOfProduct++;
+            $(param).parent().children(".cart-detail-number").val(numberOfProduct);
+            //updateQuantity(productId, numberOfProduct);
+            //console.log($(param).parent().children(".cart-detail-number").val());
+        }
+
+        function updateTotal(param) {
+            var priceFood = $(".price-food")
+            var priceNum = parseInt(priceFood.html())
+            var qtyList = $(".cart-detail-number")
+            var qty = $(param).parent().children(".cart-detail-number").val()
+            var qtyNum = parseInt(qty)
+            // var subTotal = $(param).parent().parent().children(".cart-detail-total").children(".sub-total")
+            var subTotal = $(".sub-total")
+            console.log($(".sub-total"))
+            var sum = 0;
+            for (let i = 0; i < qtyList.length; i++) {
+                let priceInt = parseInt(priceFood[i].innerHTML)
+                let qtyInt = parseInt(qtyList[i].value)
+                console.log(parseInt(qtyList[i].value))
+                console.log(parseInt(priceFood[i].innerHTML))
+                sum += (priceInt * qtyInt)
+                console.log(subTotal[i])
+                let isum = (priceInt * qtyInt)
+                subTotal[i].innerHTML = `${isum} &#8363;`
+            }
+
+            $("#total-price").html(`${parseInt(sum * 1.1)} &#8363;`)
+        }
+        function updateQuantityFood() {
+            var quantityElement = $(".cart-detail-number")
+            var object = {
+                "data": []
+            }
+            for (let i = 0; i < quantityElement.length; i++) {
+                let id = quantityElement[i].dataset.id
+                let qty = quantityElement[i].value
+                let subobject = {
+                    "id": id,
+                    "quantity": qty
+                }
+                object.data.push(subobject)
+            }
+
+            $.ajax({
+                url: "http://127.0.0.1:5000/cart/update-quantity",
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                data: JSON.stringify(object),
+                success: function (responseObject) {
+                    console.log(responseObject)
+                    console.log("PUT Success!")
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
     </script>
+    {% endblock %}
 </div>
 {% endblock %}

@@ -127,13 +127,17 @@ def removeItem():
 def updateQuantity():
     data = request.json
     print(type(data))
-    if current_user.is_authenticated:
-        cartID = current_user.cart_id
-    else:
-        cartID = request.cookies.get('cart_id')
-    for item in data:
-        pass
-        cartItem = OrderItem.query.get((cartID, item['id']))
-        cartItem.updateQuantity(item['quantity'])
+    try:
+        if current_user.is_authenticated:
+            cartID = current_user.cart_id
+        else:
+            cartID = request.cookies.get('cart_id')
+        for item in data:
+            pass
+            # cartItem = OrderItem.query.get((cartID, item['id']))
+            # cartItem.updateQuantity(item['quantity'])
 
-    return jsonify({'message' : 'Updated cart'})
+        return jsonify({'message' : 'Updated cart'})
+    except Exception as e:
+        print(e)
+        return "Error 500"
