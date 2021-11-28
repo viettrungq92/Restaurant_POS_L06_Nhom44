@@ -76,11 +76,10 @@
                     </div>
                     <div class="col-sm-4 p-0 m-0">
                         <div class="row p-0 menu-item">
-                            <button class="cart btn-no-border">
+                            <a class="btn-no-border" style="text-decoration: none;" href=" {{ url_for('cart.getCartItems') }}">
                                 <img src="../static/images/cartwhite.png" class="icon"/>
-                                <!-- <span class="badge bg-danger rounded-circle">2</span> -->
-                            </button>
-                        </div>    
+                            </a>
+                        </div>   
                     </div> 
                 </div>
                

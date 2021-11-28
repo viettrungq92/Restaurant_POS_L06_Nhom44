@@ -16,7 +16,7 @@ def login():
 @auth.route('/admin-login')
 def admin_login():
     if current_user.is_authenticated:
-        return redirect('/')
+        return redirect('/orders-manager')
     return render_template('admin_login_page.html')
 
 @auth.route('/login', methods=['POST'])
@@ -48,7 +48,7 @@ def admin_login_post():
 
     login_user(user, remember=remember)
 
-    return redirect(url_for('auth.users_manager'))
+    return redirect(url_for('auth.orders_manager'))
 
 
 @auth.route('/signup')
@@ -73,7 +73,7 @@ def signup_post():
         return redirect(url_for('auth.signup'))
 
     new_user = User(email=email, firstname=firstname, lastname=lastname, phone=phone,
-                    address=address,  password=generate_password_hash(password, method='sha256'))
+                    address=address, user_role = 'user' , password=generate_password_hash(password, method='sha256'))
 
     db.session.add(new_user)
     db.session.commit()
@@ -93,9 +93,9 @@ def profile():
 
 
 
-@auth.route('/users-manager')
+@auth.route('/orders-manager')
 @admin_required()
-def users_manager():
+def orders_manager():
    return render_template('admin-page.html')
 
 

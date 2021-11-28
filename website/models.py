@@ -37,7 +37,7 @@ class User(UserMixin, db.Model):
 
     def is_admin(self):
         return self.user_role and ("admin" in self.user_role)
-            
+          
         
     
 

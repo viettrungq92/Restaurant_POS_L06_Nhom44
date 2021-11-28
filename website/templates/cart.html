@@ -44,9 +44,9 @@
                     </span>
                 </div>
                 <div class="cart-detail-quantity">
-                    <button class="cart-detail-minus" type="submit">-</button>
+                    <!-- <button class="cart-detail-minus" type="submit">-</button> -->
                     <input type="number" class="cart-detail-number" min="1" step="1" value="{{ food.quantity }}">
-                    <button class="cart-detail-plus" type="submit">+</button>
+                    <!-- <button class="cart-detail-plus" type="submit">+</button> -->
                 </div>
                 <div class="cart-detail-total">
                     <span> {{ food.calPrice() }} &#8363;</span>
@@ -134,10 +134,37 @@
     {% include "Checkout.html" %}
 
     <script>
+
         function removeItem(oid, did){
             location.href=`{{ url_for('.removeItem') }}?dish_id=${did}`
         }
- 
+        $(".cart-detail-quantity").on("click", ".cart-detail-plus", function () {
+            plusHandle(this);
+        })
+        
+        $(".cart-detail-quantity").on("click", ".cart-detail-minus", function () {
+            minusHandle(this);
+        })
+
+        function plusHandle(param) {
+            console.log("plus");
+            var numberOfProduct = $(param).parent().children(".quantity").val();
+            var productId = $(param).parent().children(".quantity").data("id");
+            console.log(numberOfProduct);
+            numberOfProduct++;
+            $(param).parent().children(".quantity").val(numberOfProduct);
+        }
+
+        function minusHandle(param) {
+            var numberOfProduct = $(param).parent().children(".quantity").val();
+            var productId = $(param).parent().children(".quantity").data("id");
+            if (numberOfProduct == 1) {
+                $(param).css("cursor", "default");
+            } else if (numberOfProduct > 1) {
+                numberOfProduct--;
+                $(param).parent().children(".quantity").val(numberOfProduct);
+            }
+        }
     </script>
 </div>
 {% endblock %}

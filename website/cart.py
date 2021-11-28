@@ -93,14 +93,14 @@ def canelOrder(id):
     order = Order.query.get(id)
     print(order.status)
     order.cancel()
-    return redirect( url_for('auth.users_manager'))
+    return redirect( url_for('auth.orders_manager'))
 
 
 @cart.route('/order-fullfill/<int:id>', methods=['GET'])
 def fullfillOrder(id):
     order = Order.query.get(id)
     order.fullfill()
-    return redirect( url_for('auth.users_manager'))
+    return redirect( url_for('auth.orders_manager'))
 
 @cart.route('/dish/<int:id>', methods=['GET'])
 def getDishById(id):
@@ -122,3 +122,18 @@ def removeItem():
     except Exception as e:
         print(e)
         abort(428)
+
+@cart.route('/update-quantity', methods=['POST'])
+def updateQuantity():
+    data = request.json
+    print(type(data))
+    if current_user.is_authenticated:
+        cartID = current_user.cart_id
+    else:
+        cartID = request.cookies.get('cart_id')
+    for item in data:
+        pass
+        cartItem = OrderItem.query.get((cartID, item['id']))
+        cartItem.updateQuantity(item['quantity'])
+
+    return jsonify({'message' : 'Updated cart'})
